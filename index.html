@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =============================================
+       Science Station | National Science Day 2026
+       ============================================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Science Station | National Science Day Interactive Booth</title>
+  <meta name="description" content="Science Station brings National Science Day to life with VR experiences, titration demos, Raman Effect concepts, and science memes. From Lab to Launchpad!" />
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <!-- =============================================
+       HERO SECTION
+       ============================================= -->
+  <header class="hero" role="banner">
+    <!-- Animated background grid -->
+    <div class="hero-grid" aria-hidden="true"></div>
+    <!-- Floating orbs for depth -->
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    <div class="orb orb-3" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <!-- Eyebrow label -->
+      <span class="hero-eyebrow">National Science Day 2026</span>
+
+      <!-- ONE H1 on the entire page -->
+      <h1 class="hero-title">
+        Science<br /><span class="accent-neon">Station</span>
+      </h1>
+
+      <p class="hero-sub">From Lab to Launchpad</p>
+      <p class="hero-tagline">
+        Where memes meet molecules, and experiments meet experience.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#features" class="btn btn-primary">Explore the Experience</a>
+        <a href="#quiz" class="btn btn-outline">Take the Quiz</a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============================================
+       ABOUT SECTION
+       ============================================= -->
+  <section class="about" id="about" aria-labelledby="about-heading">
+    <div class="about-inner">
+      <div class="section-tag">About the Experience</div>
+      <h2 id="about-heading" class="section-title">
+        Redefining How<br /><span class="accent-purple">Science Feels</span>
+      </h2>
+      <p class="about-text", >
+        Science Station is an immersive, interactive celebration of discovery.
+        Step inside a world where <strong>Virtual Reality</strong> lets you shrink
+        to molecular scale, where a live <strong>Titration Demonstration</strong>
+        shows chemistry happening in real time, and where the
+        <strong>Raman Effect</strong> isn't just a Nobel prize fact — it's a
+        story you can see and touch. And because science deserves a laugh,
+        we've woven in a curated wall of <strong>Science Memes Explained</strong>
+        to prove that curiosity can be contagious — and hilarious.
+      </p>
+      <p class="about-text">
+        This is not a textbook. This is not a lecture. This is the lab,
+        the launchpad, and the punchline — all in one place.
+      </p>
+
+      <!-- Stats row -->
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Interactive Zones</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat">
+          <span class="stat-num">360°</span>
+          <span class="stat-label">VR Immersion</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">Curiosity Unlocked</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FEATURES SECTION
+       ============================================= -->
+  <section class="features" id="features" aria-labelledby="features-heading">
+    <div class="section-tag">What's Inside</div>
+    <h2 id="features-heading" class="section-title">
+      Four Zones. One <span class="accent-green">Mission.</span>
+    </h2>
+
+    <div class="cards-grid">
+
+      <!-- Card 1 -->
+      <article class="card card--blue">
+        <div class="card-icon" aria-hidden="true">⚗️</div>
+        <h3 class="card-title">Live Titration Demonstration</h3>
+        <p class="card-desc">
+          Watch acids and bases dance in real time. Colour changes, precise
+          measurements, and the satisfying drama of the equivalence point —
+          chemistry as theatre.
+        </p>
+        <span class="card-tag">Chemistry Lab</span>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card card--purple">
+        <div class="card-icon" aria-hidden="true">🔬</div>
+        <h3 class="card-title">Raman Effect Concept</h3>
+        <p class="card-desc">
+          India's Nobel prize moment brought to life. Explore how scattered
+          light reveals the hidden fingerprint of matter — and why C.V. Raman's
+          curiosity changed physics forever.
+        </p>
+        <span class="card-tag">Physics Discovery</span>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card card--teal">
+        <div class="card-icon" aria-hidden="true">🥽</div>
+        <h3 class="card-title">VR Science Experience</h3>
+        <p class="card-desc">
+          Strap on a headset and travel inside a cell, orbit an atom, or stand
+          at the edge of a black hole. Immersive 360° science that textbooks
+          can only dream about.
+        </p>
+        <span class="card-tag">Virtual Reality</span>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card card--green">
+        <div class="card-icon" aria-hidden="true">🧬</div>
+        <h3 class="card-title">Science Memes Explained</h3>
+        <p class="card-desc">
+          The internet loves a good science meme. We love them too — and we
+          explain the real science behind each one. Laugh first, learn second,
+          remember forever.
+        </p>
+        <span class="card-tag">Science Culture</span>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       SCIENCE + DIGITAL SECTION
+       ============================================= -->
+  <section class="digital" id="digital" aria-labelledby="digital-heading">
+    <div class="digital-inner">
+      <div class="section-tag">Science Meets Digital</div>
+      <h2 id="digital-heading" class="section-title">
+        The Lab Is the <span class="accent-neon">Algorithm</span>
+      </h2>
+      <p class="digital-text">
+        Science and digital innovation share the same heartbeat: a hypothesis,
+        an experiment, a result, and iteration. Just as a scientist refines a
+        formula through repeated testing, digital thinkers run A/B tests,
+        analyse data, and optimise outcomes. At Science Station, we bridge
+        these worlds — showing how the scientific method powers everything from
+        drug discovery to search engine rankings. Every click is a variable.
+        Every campaign is an experiment. When you think like a scientist, the
+        entire digital landscape becomes your laboratory.
+      </p>
+      <div class="digital-pills">
+        <span class="pill">Hypothesis → Strategy</span>
+        <span class="pill">Experiment → A/B Test</span>
+        <span class="pill">Data → Insight</span>
+        <span class="pill">Iteration → Growth</span>
+      </div>
+    </div>
+
+    <!-- Decorative lines -->
+    <div class="deco-lines" aria-hidden="true">
+      <div class="dline"></div>
+      <div class="dline"></div>
+      <div class="dline"></div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <span class="footer-brand">Science Station</span>
+      <span class="footer-sep" aria-hidden="true">|</span>
+      <span class="footer-copy">National Science Day 2026</span>
+    </div>
+    <p class="footer-sub">From Lab to Launchpad — Celebrating the spirit of discovery.</p>
+  </footer>
+
+</body>
+</html>

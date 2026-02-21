@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exhibits — Science Station</title>
+  <link rel="stylesheet" href="exhibits.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ─────────── NAV ─────────── -->
+  <nav class="nav" aria-label="Site navigation">
+    <div class="nav__logo">Science Station</div>
+    <ul class="nav__links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#" class="active">Exhibits</a></li>
+      <li><a href="#">Visit</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ─────────── 1. HERO ─────────── -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__noise"></div>
+      <div class="hero__grid-lines"></div>
+
+      <div class="hero__content">
+        <span class="hero__label">Exhibits 2025</span>
+        <h1 id="hero-heading" class="hero__h1">
+          The Science Station<br /><em>Experience</em>
+        </h1>
+        <p class="hero__sub">Where curiosity becomes interaction.</p>
+        <a href="#vr" class="btn">Explore Exhibits ↓</a>
+      </div>
+
+      <div class="hero__orbs" aria-hidden="true">
+        <div class="orb orb--1"></div>
+        <div class="orb orb--2"></div>
+        <div class="orb orb--3"></div>
+      </div>
+    </section>
+
+    <!-- ─────────── 2. VR ─────────── -->
+    <section class="exhibit exhibit--vr" id="vr" aria-labelledby="vr-heading">
+      <div class="exhibit__number" aria-hidden="true">01</div>
+      <div class="exhibit__inner">
+        <div class="exhibit__tag">Virtual Reality</div>
+        <h2 id="vr-heading" class="exhibit__title">VR: Inside the Mind of Science</h2>
+        <p class="exhibit__desc">
+          Step beyond the boundaries of a traditional exhibit and into an immersive, 360-degree
+          scientific journey. Our VR experience places you inside cellular structures, lets you
+          witness chemical reactions at the molecular level, and propels you through the vast
+          corridors of the universe — all from a single headset. Every interaction is calibrated
+          to reveal the hidden logic of the natural world, making abstract principles tangible,
+          visceral, and unforgettable.
+        </p>
+        <div class="exhibit__meta">
+          <span>Duration: ~15 min</span>
+          <span>All ages welcome</span>
+          <span>Guided & self-directed modes</span>
+        </div>
+      </div>
+      <div class="exhibit__visual" aria-hidden="true">
+        <div class="viz viz--vr">
+          <div class="vr-ring vr-ring--1"></div>
+          <div class="vr-ring vr-ring--2"></div>
+          <div class="vr-ring vr-ring--3"></div>
+          <div class="vr-core"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 3. TITRATION ─────────── -->
+    <section class="exhibit exhibit--titration exhibit--alt" id="titration" aria-labelledby="titration-heading">
+      <div class="exhibit__number" aria-hidden="true">02</div>
+      <div class="exhibit__inner">
+        <div class="exhibit__tag">Live Demonstration</div>
+        <h2 id="titration-heading" class="exhibit__title">Precision in Motion:<br />Acid–Base Titration</h2>
+        <p class="exhibit__desc">
+          Witness measurement elevated to an art form. In our titration demonstration, a single
+          drop of solution transforms colour permanently — a vivid signal that chemistry has
+          reached its point of perfect balance. Visitors observe the controlled addition of a
+          titrant, tracking pH shifts in real time on live graphs, and learn how precision
+          instruments and scientific intuition combine to reveal the invisible stoichiometry
+          hiding inside everyday liquids.
+        </p>
+        <div class="exhibit__meta">
+          <span>Demonstrations every hour</span>
+          <span>Hands-on component available</span>
+          <span>Ages 10+</span>
+        </div>
+      </div>
+      <div class="exhibit__visual" aria-hidden="true">
+        <div class="viz viz--titration">
+          <div class="burette">
+            <div class="burette__liquid"></div>
+          </div>
+          <div class="beaker">
+            <div class="beaker__liquid"></div>
+            <div class="beaker__drop"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 4. RAMAN ─────────── -->
+    <section class="exhibit exhibit--raman" id="raman" aria-labelledby="raman-heading">
+      <div class="exhibit__number" aria-hidden="true">03</div>
+      <div class="exhibit__inner">
+        <div class="exhibit__tag">Optical Science</div>
+        <h2 id="raman-heading" class="exhibit__title">Light and Matter:<br />Conceptual Raman Exploration</h2>
+        <p class="exhibit__desc">
+          When light encounters matter, most of it passes through unchanged — but a tiny fraction
+          scatters at a different wavelength, carrying the fingerprint of the molecules it touched.
+          This is the Raman Effect. Our conceptual station lets visitors direct laser light through
+          samples, observe simulated spectral shifts on large displays, and decode what scattered
+          photons reveal about molecular bonds, symmetry, and identity. A phenomenon at the heart
+          of modern diagnostics, pharmaceuticals, and materials science, made beautifully visible.
+        </p>
+        <div class="exhibit__meta">
+          <span>Interactive spectral display</span>
+          <span>Nobel Prize context</span>
+          <span>All skill levels</span>
+        </div>
+      </div>
+      <div class="exhibit__visual" aria-hidden="true">
+        <div class="viz viz--raman">
+          <div class="laser-beam"></div>
+          <div class="scatter-dot scatter-dot--1"></div>
+          <div class="scatter-dot scatter-dot--2"></div>
+          <div class="scatter-dot scatter-dot--3"></div>
+          <div class="scatter-dot scatter-dot--4"></div>
+          <div class="molecule">
+            <div class="mol-atom mol-atom--c"></div>
+            <div class="mol-atom mol-atom--a"></div>
+            <div class="mol-atom mol-atom--b"></div>
+            <div class="mol-bond mol-bond--1"></div>
+            <div class="mol-bond mol-bond--2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 5. MEME ─────────── -->
+    <section class="exhibit exhibit--meme exhibit--alt" id="meme" aria-labelledby="meme-heading">
+      <div class="exhibit__number" aria-hidden="true">04</div>
+      <div class="exhibit__inner">
+        <div class="exhibit__tag">Science Communication</div>
+        <h2 id="meme-heading" class="exhibit__title">Decoding the Meme</h2>
+        <p class="exhibit__desc">
+          Science doesn't live only in journals — it travels through culture, humour, and viral
+          imagery. "Decoding the Meme" is an interactive exhibit that dissects popular science
+          memes to reveal the genuine concepts beneath the jokes. From misquoted statistics to
+          brilliant analogies hiding in plain sight, visitors learn how to evaluate accuracy,
+          context, and intent in science communication. A playful but rigorous exercise in
+          critical thinking for the digital age.
+        </p>
+        <div class="exhibit__meta">
+          <span>Collaborative wall display</span>
+          <span>Audience voting component</span>
+          <span>Great for teens & adults</span>
+        </div>
+      </div>
+      <div class="exhibit__visual" aria-hidden="true">
+        <div class="viz viz--meme">
+          <div class="meme-card meme-card--1">
+            <div class="meme-card__bar" style="width:85%"></div>
+            <div class="meme-card__bar" style="width:60%"></div>
+            <div class="meme-card__bar" style="width:40%"></div>
+          </div>
+          <div class="meme-card meme-card--2">
+            <div class="meme-card__label">FACT</div>
+          </div>
+          <div class="meme-card meme-card--3">
+            <div class="meme-card__label">MYTH</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────── 6. CLOSING ─────────── -->
+    <section class="closing" id="closing" aria-labelledby="closing-heading">
+      <div class="closing__bg-text" aria-hidden="true">SCIENCE</div>
+      <div class="closing__content">
+        <div class="closing__tag">Every Visit</div>
+        <h2 id="closing-heading" class="closing__title">From Observation<br />to Experience</h2>
+        <p class="closing__desc">
+          Science Station is built on a single conviction: that knowledge is not passive. Every
+          exhibit here is an invitation — to touch, question, test, and discover. Whether you
+          leave with a new understanding of light, a deeper respect for chemistry, or simply a
+          contagious curiosity, you carry something real. That is the Science Station experience.
+        </p>
+        <div class="closing__actions">
+          <a href="#" class="btn btn--ghost">Plan Your Visit</a>
+          <a href="#" class="btn">Book a Group Tour</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─────────── FOOTER ─────────── -->
+  <footer class="footer">
+    <p>© 2025 Science Station. All rights reserved.</p>
+    <p class="footer__tagline">Curiosity, uncontained.</p>
+  </footer>
+
+</body>
+</html>

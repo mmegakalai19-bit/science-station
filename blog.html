@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights — Science Station</title>
+  <link rel="stylesheet" href="blog.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav" aria-label="Site navigation">
+    <div class="nav__logo">Science Station</div>
+    <ul class="nav__links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Exhibits</a></li>
+      <li><a href="#" class="active">Blog</a></li>
+      <li><a href="#">Visit</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ── 1. HERO ── -->
+    <section class="hero" aria-labelledby="blog-hero-heading">
+      <div class="hero__bg-lines" aria-hidden="true"></div>
+      <div class="hero__content">
+        <span class="hero__eyebrow">Blog &amp; Ideas</span>
+        <h1 id="blog-hero-heading" class="hero__h1">
+          Science Station<br /><em>Insights</em>
+        </h1>
+        <p class="hero__sub">Exploring science, learning, and innovation.</p>
+        <div class="hero__divider" aria-hidden="true"></div>
+        <div class="hero__meta">
+          <span>2 Articles</span>
+          <span>Science Communication</span>
+          <span>Updated 2025</span>
+        </div>
+      </div>
+      <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
+      <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
+    </section>
+
+    <!-- ── FILTER BAR ── -->
+    <div class="filter-bar" role="navigation" aria-label="Blog categories">
+      <span class="filter-bar__label">Browse:</span>
+      <ul class="filter-bar__list">
+        <li><button class="filter-btn filter-btn--active">All Posts</button></li>
+        <li><button class="filter-btn">Science Communication</button></li>
+        <li><button class="filter-btn">Digital &amp; Tech</button></li>
+        <li><button class="filter-btn">Education</button></li>
+      </ul>
+    </div>
+
+    <!-- ── 2. BLOG CARDS ── -->
+    <section class="posts" aria-labelledby="posts-heading">
+      <h2 id="posts-heading" class="sr-only">Blog Posts</h2>
+
+      <div class="posts__grid">
+
+        <!-- Card 1 -->
+        <article class="card" aria-labelledby="post1-title">
+          <div class="card__accent card__accent--teal" aria-hidden="true"></div>
+          <div class="card__header">
+            <div class="card__meta">
+              <span class="card__tag">Science Communication</span>
+              <span class="card__dot" aria-hidden="true"></span>
+              <time class="card__date" datetime="2025-04-10">April 10, 2025</time>
+            </div>
+            <div class="card__num" aria-hidden="true">01</div>
+          </div>
+          <div class="card__body">
+            <h3 id="post1-title" class="card__title">
+              How Science Memes Improve Learning
+            </h3>
+            <p class="card__desc">
+              Humour has long been an underestimated tool in education. When a well-crafted meme
+              distils a complex concept into a single image and caption, it activates cognitive
+              pathways that dry textbook prose simply cannot reach. We explore the psychology
+              behind this — from incongruity theory to emotional encoding — and examine how
+              science communicators are turning viral formats into genuine learning moments.
+            </p>
+            <div class="card__footer">
+              <a href="#" class="card__btn" aria-label="Read more about How Science Memes Improve Learning">
+                Read More
+                <span class="card__btn-arrow" aria-hidden="true">→</span>
+              </a>
+              <div class="card__read-time">6 min read</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card" aria-labelledby="post2-title">
+          <div class="card__accent card__accent--blue" aria-hidden="true"></div>
+          <div class="card__header">
+            <div class="card__meta">
+              <span class="card__tag card__tag--blue">Digital &amp; Tech</span>
+              <span class="card__dot" aria-hidden="true"></span>
+              <time class="card__date" datetime="2025-03-22">March 22, 2025</time>
+            </div>
+            <div class="card__num" aria-hidden="true">02</div>
+          </div>
+          <div class="card__body">
+            <h3 id="post2-title" class="card__title">
+              Is SEO a Scientific Process?
+            </h3>
+            <p class="card__desc">
+              At first glance, search engine optimisation looks like a bag of tricks — keywords,
+              backlinks, metadata. But look closer and a rigorous method emerges: hypothesis,
+              experiment, measurement, iteration. We draw a direct line between the scientific
+              method and high-performance digital marketing, asking whether the best SEO
+              practitioners are, in fact, applied scientists working with data and controlled tests.
+            </p>
+            <div class="card__footer">
+              <a href="#" class="card__btn card__btn--blue" aria-label="Read more about Is SEO a Scientific Process?">
+                Read More
+                <span class="card__btn-arrow" aria-hidden="true">→</span>
+              </a>
+              <div class="card__read-time">8 min read</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── NEWSLETTER ── -->
+    <section class="newsletter" aria-labelledby="newsletter-heading">
+      <div class="newsletter__inner">
+        <div class="newsletter__text">
+          <span class="newsletter__eyebrow">Stay Curious</span>
+          <h2 id="newsletter-heading" class="newsletter__title">New ideas, straight to your inbox.</h2>
+          <p class="newsletter__sub">No noise. Just science worth reading.</p>
+        </div>
+        <form class="newsletter__form" role="form" aria-label="Newsletter signup">
+          <label for="email-input" class="sr-only">Email address</label>
+          <input
+            id="email-input"
+            class="newsletter__input"
+            type="email"
+            placeholder="your@email.com"
+            autocomplete="email"
+            required
+          />
+          <button type="submit" class="newsletter__btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <p>© 2025 Science Station. All rights reserved.</p>
+    <p class="footer__tagline">Curiosity, uncontained.</p>
+  </footer>
+
+</body>
+</html>

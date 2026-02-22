@@ -771,4 +771,17 @@ body {
     .hero {
       padding-top: 80px;
     }
+   .intro-seo {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.intro-seo p {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
 }

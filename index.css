@@ -27,7 +27,7 @@
   --font-body:    'Exo 2', sans-serif;
 
   /* Spacing */
-  --section-pad: clamp(5rem, 10vw, 9rem);
+  --section-pad: clamp(4rem, 8vw, 8rem);
 }
 
 html {
@@ -38,7 +38,7 @@ body {
   background-color: var(--bg-black);
   color: var(--text-white);
   font-family: var(--font-body);
-  font-size: clamp(18px, 1.6vw, 22px);
+  font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -51,21 +51,21 @@ body {
 .section-tag {
   display: inline-block;
   font-family: var(--font-display);
-  font-size: clamp(0.65rem, 1.2vw, 0.8rem);
-  letter-spacing: 0.25em;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--neon-blue);
   border: 1px solid rgba(0, 212, 255, 0.35);
-  padding: 0.35em 1em;
+  padding: 0.4em 1.2em;
   border-radius: 2em;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.5rem;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 900;
-  line-height: 1.15;
+  line-height: 1.2;
   margin-bottom: 2rem;
   text-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
 }
@@ -83,6 +83,7 @@ body {
   text-align: center;
   overflow: hidden;
   background: radial-gradient(ellipse 80% 60% at 50% 0%, #041236 0%, var(--bg-black) 70%);
+  padding: 2rem 1.5rem;
 }
 
 /* Grid background */
@@ -143,26 +144,26 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 2rem 1.5rem;
-  max-width: 90vw;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero-eyebrow {
   display: inline-block;
   font-family: var(--font-display);
-  font-size: clamp(0.7rem, 1.4vw, 0.9rem);
-  letter-spacing: 0.3em;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--neon-green);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   animation: fadeDown 0.8s ease both;
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 13vw, 11rem);
+  font-size: clamp(3rem, 10vw, 7rem);
   font-weight: 900;
-  line-height: 0.95;
+  line-height: 1;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--text-white);
@@ -170,6 +171,7 @@ body {
     0 0 60px rgba(0, 212, 255, 0.4),
     0 0 120px rgba(0, 212, 255, 0.15);
   animation: fadeDown 0.9s ease 0.1s both;
+  margin-bottom: 1.5rem;
 }
 
 .hero-title .accent-neon {
@@ -180,21 +182,22 @@ body {
 
 .hero-sub {
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 3vw, 2.2rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--neon-purple);
-  margin-top: 1.2rem;
+  margin-bottom: 1rem;
   text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
   animation: fadeDown 1s ease 0.2s both;
 }
 
 .hero-tagline {
-  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   color: var(--text-muted);
-  max-width: 640px;
-  margin: 1rem auto 2.4rem;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
   animation: fadeDown 1s ease 0.35s both;
 }
 
@@ -209,15 +212,16 @@ body {
 
 .btn {
   font-family: var(--font-display);
-  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  padding: 1em 2.4em;
+  padding: 1em 2.5em;
   border-radius: 4px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   cursor: pointer;
+  display: inline-block;
 }
 
 .btn-primary {
@@ -250,7 +254,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  margin-top: 3.5rem;
+  margin-top: 4rem;
   animation: fadeDown 1s ease 0.8s both;
 }
 .scroll-hint span {
@@ -280,7 +284,7 @@ body {
    ============================================= */
 .about {
   width: 100%;
-  padding: var(--section-pad) clamp(3.5rem, 8vw, 10rem);
+  padding: var(--section-pad) clamp(2rem, 6vw, 8rem);
   background: linear-gradient(180deg, var(--bg-black) 0%, var(--bg-navy) 100%);
   position: relative;
 }
@@ -294,16 +298,15 @@ body {
 }
 
 .about-inner {
-  max-width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .about-text {
-  font-size: clamp(2.2rem, 1.7vw, 1.3rem);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
   color: #c4d0ea;
-  line-height: 1.85;
-  margin-bottom: 1.4rem;
-  max-width: 1600px;
-  
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
 }
 
 .about-text strong {
@@ -311,24 +314,40 @@ body {
   font-weight: 600;
 }
 
+/* Inline links */
+.inline-link {
+  color: var(--neon-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.inline-link:hover {
+  color: var(--neon-purple);
+  border-bottom: 1px solid var(--neon-purple);
+}
+
 /* Stats */
 .stats-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 3rem;
-  margin-top: 3.5rem;
+  margin-top: 4rem;
   flex-wrap: wrap;
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.5rem;
+  text-align: center;
 }
 
 .stat-num {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 900;
   color: var(--neon-blue);
   text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
@@ -336,10 +355,10 @@ body {
 }
 
 .stat-label {
-  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
 }
 
 .stat-divider {
@@ -353,7 +372,7 @@ body {
    ============================================= */
 .features {
   width: 100%;
-  padding: var(--section-pad) clamp(1.5rem, 6vw, 8rem);
+  padding: var(--section-pad) clamp(2rem, 6vw, 8rem);
   background: var(--bg-navy);
   text-align: center;
   position: relative;
@@ -367,23 +386,29 @@ body {
   background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
 }
 
-/* Cards grid */
+/* Cards grid - Single Row Layout */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
-  margin-top: 3.5rem;
+  margin-top: 3rem;
   text-align: left;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card {
   background: var(--bg-card);
   border-radius: 12px;
-  padding: clamp(1.8rem, 3vw, 2.8rem);
+  padding: 2rem;
   border: 1px solid transparent;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
 }
 
 /* Colour variants via border + glow */
@@ -414,34 +439,37 @@ body {
 }
 
 .card-icon {
-  font-size: clamp(3.2rem, 4vw, 3rem);
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
   display: block;
 }
 
 .card-title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 2vw, 1.35rem);
+  font-size: clamp(1.2rem, 1.5vw, 1.3rem);
   font-weight: 700;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
   line-height: 1.3;
   color: var(--text-white);
 }
 
 .card-desc {
-  font-size: clamp(1.05rem, 1.4vw, 1.05rem);
+  font-size: clamp(0.95rem, 1.1vw, 1rem);
   color: #9aaac8;
-  line-height: 1.75;
-  margin-bottom: 1.4rem;
+  line-height: 1.7;
+  margin-bottom: auto;
+  flex-grow: 1;
 }
 
 .card-tag {
   font-family: var(--font-display);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  padding: 0.3em 0.85em;
+  padding: 0.5em 1em;
   border-radius: 2em;
+  display: inline-block;
+  margin-top: 1.5rem;
 }
 
 .card--blue   .card-tag { background: rgba(0, 212, 255, 0.12);   color: var(--neon-blue);   border: 1px solid rgba(0, 212, 255, 0.35); }
@@ -450,11 +478,40 @@ body {
 .card--green  .card-tag { background: rgba(57, 255, 20, 0.12);   color: var(--neon-green);  border: 1px solid rgba(57, 255, 20, 0.35); }
 
 /* =============================================
+   EXPLORE MORE SECTION
+   ============================================= */
+.explore-more {
+  padding: var(--section-pad) clamp(2rem, 6vw, 8rem);
+  background: rgba(10, 10, 20, 0.5);
+  text-align: center;
+}
+
+.explore-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.explore-more h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.explore-more p {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+}
+
+/* =============================================
    SCIENCE + DIGITAL SECTION
    ============================================= */
 .digital {
   width: 100%;
-  padding: var(--section-pad) clamp(1.5rem, 8vw, 10rem);
+  padding: var(--section-pad) clamp(2rem, 6vw, 8rem);
   background: linear-gradient(180deg, var(--bg-navy) 0%, var(--bg-black) 100%);
   position: relative;
   overflow: hidden;
@@ -471,13 +528,14 @@ body {
 .digital-inner {
   position: relative;
   z-index: 2;
-  max-width: 1600px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .digital-text {
-  font-size: clamp(2.2rem, 1.7vw, 1.3rem);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
   color: #c4d0ea;
-  line-height: 1.9;
+  line-height: 1.8;
   margin-bottom: 2.5rem;
 }
 
@@ -485,14 +543,15 @@ body {
 .digital-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .pill {
   font-family: var(--font-display);
-  font-size: clamp(0.75rem, 1.3vw, 0.9rem);
-  letter-spacing: 0.08em;
-  padding: 0.55em 1.3em;
+  font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+  letter-spacing: 0.06em;
+  padding: 0.6em 1.5em;
   border-radius: 2em;
   background: rgba(0, 212, 255, 0.08);
   border: 1px solid rgba(0, 212, 255, 0.3);
@@ -539,7 +598,7 @@ body {
    ============================================= */
 .footer {
   width: 100%;
-  padding: 2.5rem clamp(1.5rem, 6vw, 8rem);
+  padding: 3rem clamp(2rem, 6vw, 8rem);
   background: var(--bg-black);
   border-top: 1px solid rgba(0, 212, 255, 0.12);
   text-align: center;
@@ -549,14 +608,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
+  gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .footer-brand {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   font-weight: 700;
   color: var(--neon-blue);
   letter-spacing: 0.1em;
@@ -569,20 +628,33 @@ body {
 
 .footer-copy {
   font-family: var(--font-display);
-  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
   color: var(--text-muted);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 }
 
 .footer-sub {
-  font-size: clamp(0.8rem, 1.2vw, 0.92rem);
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
   color: rgba(136, 153, 187, 0.5);
-  margin-top: 0.2rem;
+  margin-top: 0.5rem;
+  font-style: italic;
 }
 
 /* =============================================
    RESPONSIVE OVERRIDES
    ============================================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .card {
+    min-height: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .stats-row {
     gap: 2rem;
@@ -599,17 +671,30 @@ body {
   .cards-grid {
     grid-template-columns: 1fr;
   }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
 }
 
 @media (max-width: 480px) {
   .hero-cta {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 
   .btn {
     width: 100%;
     text-align: center;
   }
-
+  
+  .digital-pills {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pill {
+    width: 100%;
+    max-width: 300px;
+  }
 }

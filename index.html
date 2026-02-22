@@ -21,13 +21,32 @@
   "eventStatus": "https://schema.org/EventScheduled",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
 }
+
 </script>
+
+   <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [{
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://yourgithubusername.github.io/"
+ }]
+}
+</script>
+  
   <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="index.css" />
+
+  <meta property="og:title" content="Science Station – National Science Day 2026">
+<meta property="og:description" content="Interactive science exhibition booth with VR, Raman Effect, and live titration demonstrations.">
+<meta property="og:type" content="website">
   
   <style>
     /* Navigation Styles */
@@ -199,7 +218,7 @@
        ============================================= -->
   <nav class="navbar" role="navigation">
     <div class="nav-container">
-      <a href="#" class="nav-logo">SCIENCE STATION</a>
+     <a href="index.html" class="nav-logo">SCIENCE STATION</a>
       
       <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleMenu()">
         <span></span>
@@ -267,10 +286,10 @@
       </h2>
       <p class="about-text">
         Science Station is an immersive, interactive celebration of discovery.
-        Step inside a world where <strong>Virtual Reality</strong> lets you shrink
+        Step inside a world where <a href="blog.html#vr-science" class="inline-link"><strong>Virtual Reality in Science Education</strong></a> lets you shrink
         to molecular scale, where a live <strong>Titration Demonstration</strong>
         shows chemistry happening in real time, and where the
-        <strong>Raman Effect</strong> isn't just a Nobel prize fact — it's a
+       <a href="blog.html#raman-effect" class="inline-link"><strong>Raman Effect Demonstration</strong></a>  isn't just a Nobel prize fact — it's a
         story you can see and touch. And because science deserves a laugh,
         we've woven in a curated wall of <strong>Science Memes Explained</strong>
         to prove that curiosity can be contagious — and hilarious.
@@ -361,6 +380,18 @@
 
     </div>
   </section>
+
+         <section class="explore-more">
+  <div class="explore-inner">
+    <h2>Want to Learn More?</h2>
+    <p>
+      Dive deeper into the science behind our exhibits in our 
+      <a href="blog.html" class="inline-link">Science Station Blog</a> 
+      or reach out through our 
+      <a href="contact.html" class="inline-link">Contact Page</a>.
+    </p>
+  </div>
+</section>
 
   <!-- =============================================
        SCIENCE + DIGITAL SECTION

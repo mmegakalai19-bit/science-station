@@ -608,114 +608,91 @@ window.onValue = onValue;
 </script>
   
 <script>
-  const QUESTIONS = [
-    {
-      question: "What changes during the Raman Effect?",
-      options: ["Speed of light", "Wavelength of scattered light", "Temperature of sample", "Mass of atoms"],
-      correct: 1
-    },
-    {
-      question: "The Raman Effect helps scientists identify:",
-      options: ["Planetary motion", "Molecular structure", "Weather systems", "Ocean currents"],
-      correct: 1
-    },
-    {
-      question: "What is the first step of the scientific method?",
-      options: ["Ask a question", "Form a conclusion", "Publish results", "Conduct experiment"],
-      correct: 0
-    },
-    {
-      question: "What does pH measure?",
-      options: ["Pressure", "Acidity or basicity", "Density", "Speed"],
-      correct: 1
-    }
-  ];
-
-  const LETTERS = ['A','B','C','D'];
-  const SCORE_MSGS = ["Keep studying! 📚","Good effort! 🔬","Great work! 🧪","Perfect score! 🚀"];
-
-  let currentQ = 0;
-  let score = 0;
-  let lastSubmittedName = null;
-
-  function showScreen(id) {
-    document.querySelectorAll('.screen').forEach(s => {
-      s.classList.remove('active');
-      s.style.animation = '';
-    });
-    const target = document.getElementById(id);
-    target.classList.add('active');
+const QUESTIONS = [
+  {
+    question: "What changes during the Raman Effect?",
+    options: ["Speed of light", "Wavelength of scattered light", "Temperature of sample", "Mass of atoms"],
+    correct: 1
+  },
+  {
+    question: "The Raman Effect helps scientists identify:",
+    options: ["Planetary motion", "Molecular structure", "Weather systems", "Ocean currents"],
+    correct: 1
+  },
+  {
+    question: "What is the first step of the scientific method?",
+    options: ["Ask a question", "Form a conclusion", "Publish results", "Conduct experiment"],
+    correct: 0
+  },
+  {
+    question: "What does pH measure?",
+    options: ["Pressure", "Acidity or basicity", "Density", "Speed"],
+    correct: 1
   }
+];
 
-  function startQuiz() {
-    currentQ = 0;
-    score = 0;
-    lastSubmittedName = null;
-    showScreen('screen-question');
-    renderQuestion();
-  }
+const LETTERS = ['A','B','C','D'];
+const SCORE_MSGS = ["Keep studying! 📚","Good effort! 🔬","Great work! 🧪","Perfect score! 🚀"];
 
-  function renderQuestion() {
-    const q = QUESTIONS[currentQ];
-    document.getElementById('q-counter').textContent = `QUESTION ${currentQ + 1} / ${QUESTIONS.length}`;
-    document.getElementById('q-score-live').textContent = `SCORE: ${score}`;
-    document.getElementById('progress-fill').style.width = `${(currentQ / QUESTIONS.length) * 100}%`;
-    document.getElementById('question-text').textContent = q.question;
+let currentQ = 0;
+let score = 0;
 
-    const container = document.getElementById('options-container');
-    container.innerHTML = '';
-    q.options.forEach((opt, i) => {
-      const el = document.createElement('div');
-      el.className = 'option';
-      el.innerHTML = `<span class="opt-letter">${LETTERS[i]}</span><span>${opt}</span>`;
-      el.addEventListener('click', () => selectAnswer(i));
-      container.appendChild(el);
-    });
-  }
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 
-  function selectAnswer(chosen) {
-    const q = QUESTIONS[currentQ];
-    const options = document.querySelectorAll('.option');
-    const isCorrect = chosen === q.correct;
+function startQuiz() {
+  currentQ = 0;
+  score = 0;
+  showScreen('screen-question');
+  renderQuestion();
+}
 
-    if (isCorrect) score++;
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  document.getElementById('q-counter').textContent = `QUESTION ${currentQ + 1} / ${QUESTIONS.length}`;
+  document.getElementById('q-score-live').textContent = `SCORE: ${score}`;
+  document.getElementById('progress-fill').style.width = `${(currentQ / QUESTIONS.length) * 100}%`;
+  document.getElementById('question-text').textContent = q.question;
 
-    options.forEach((opt, i) => {
-      opt.classList.add('disabled');
-      if (i === q.correct) {
-        opt.classList.add('correct');
-      } else if (i === chosen && !isCorrect) {
-        opt.classList.add('wrong');
-      } else {
-        opt.classList.add('faded');
-      }
-    });
+  const container = document.getElementById('options-container');
+  container.innerHTML = '';
 
-    setTimeout(() => {
-      currentQ++;
-      if (currentQ < QUESTIONS.length) {
-        renderQuestion();
-      } else {
-        showResult();
-      }
-    }, 900);
-  }
+  q.options.forEach((opt, i) => {
+    const el = document.createElement('div');
+    el.className = 'option';
+    el.innerHTML = `<span class="opt-letter">${LETTERS[i]}</span><span>${opt}</span>`;
+    el.addEventListener('click', () => selectAnswer(i));
+    container.appendChild(el);
+  });
+}
 
-  function showResult() {
-    showScreen('screen-result');
-    document.getElementById('final-score-num').textContent = score;
-    document.getElementById('final-score-label').textContent = `You scored ${score} out of ${QUESTIONS.length}`;
-    document.getElementById('score-msg').textContent = SCORE_MSGS[score];
-    document.getElementById('name-section').style.display = 'block';
-    document.getElementById('lb-section').style.display = 'none';
-    document.getElementById('player-name').value = '';
-    document.getElementById('player-name').focus();
-  }
+function selectAnswer(chosen) {
+  const q = QUESTIONS[currentQ];
+  const isCorrect = chosen === q.correct;
+  if (isCorrect) score++;
+
+  setTimeout(() => {
+    currentQ++;
+    if (currentQ < QUESTIONS.length) renderQuestion();
+    else showResult();
+  }, 600);
+}
+
+function showResult() {
+  showScreen('screen-result');
+  document.getElementById('final-score-num').textContent = score;
+  document.getElementById('final-score-label').textContent =
+    `You scored ${score} out of ${QUESTIONS.length}`;
+  document.getElementById('score-msg').textContent = SCORE_MSGS[score];
+
+  document.getElementById('name-section').style.display = 'block';
+  document.getElementById('lb-section').style.display = 'none';
+}
 
 function submitScore() {
-  const nameInput = document.getElementById('player-name');
-  const name = nameInput.value.trim();
-
+  const name = document.getElementById('player-name').value.trim();
   if (!name) {
     alert("Please enter your name");
     return;
@@ -727,19 +704,19 @@ function submitScore() {
     timestamp: Date.now()
   };
 
- const scoresRef = window.ref(window.db, "scores");
-window.push(scoresRef, scoreData);
-  
+  const scoresRef = window.ref(window.db, "scores");
+  window.push(scoresRef, scoreData);
+
   document.getElementById('name-section').style.display = 'none';
   document.getElementById('lb-section').style.display = 'block';
 
   listenToLeaderboard();
 }
 
-  function listenToLeaderboard() {
-  const scoresRef = ref(db, "scores");
+function listenToLeaderboard() {
+  const scoresRef = window.ref(window.db, "scores");
 
-  onValue(scoresRef, (snapshot) => {
+  window.onValue(scoresRef, (snapshot) => {
     const data = snapshot.val();
     const table = document.getElementById("lb-table");
     table.innerHTML = "";
@@ -778,75 +755,15 @@ window.push(scoresRef, scoreData);
   });
 }
 
-  const scoreData = {
-    name: name,
-    score: score,
-    timestamp: Date.now()
-  };
-
-  const scoresRef = ref(db, "scores");
-  push(scoresRef, scoreData);
-
-  document.getElementById('name-section').style.display = 'none';
-  document.getElementById('lb-section').style.display = 'block';
-
- function listenToLeaderboard() {
-  const scoresRef = ref(db, "scores");
-
-  onValue(scoresRef, (snapshot) => {
-    const data = snapshot.val();
-    const table = document.getElementById("lb-table");
-    table.innerHTML = "";
-
-    if (!data) {
-      table.innerHTML = "<div class='empty-lb'>No scores yet</div>";
-      return;
-    }
-
-    const scoresArray = Object.values(data);
-
-    scoresArray.sort((a, b) => 
-      b.score - a.score || a.timestamp - b.timestamp
-    );
-
-    const top5 = scoresArray.slice(0, 5);
-
-    top5.forEach((entry, index) => {
-      const row = document.createElement("div");
-      row.className = "lb-row";
-
-      const medal =
-        index === 0 ? "🥇" :
-        index === 1 ? "🥈" :
-        index === 2 ? "🥉" :
-        `#${index + 1}`;
-
-      row.innerHTML = `
-        <span class="lb-rank">${medal}</span>
-        <span class="lb-name">${entry.name}</span>
-        <span class="lb-score">${entry.score}/4</span>
-      `;
-
-      table.appendChild(row);
-    });
-  });
+function playAgain() {
+  startQuiz();
 }
 
-  
-  function escHtml(str) {
-    return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-  }
-
-  function playAgain() {
-    startQuiz();
-  }
-
-  // Allow Enter key to submit name
-  document.getElementById('player-name').addEventListener('keydown', e => {
+document.getElementById('player-name')
+  .addEventListener('keydown', e => {
     if (e.key === 'Enter') submitScore();
-  });
+});
 </script>
-
  
   
 </body>

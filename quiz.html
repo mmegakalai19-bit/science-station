@@ -1,164 +1,758 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>National Science Day 2026 Quiz | Science Station ZS Trade Show Chennai</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<title>Science Station Quiz – National Science Day 2026 | ZS Trade Show Chennai</title>
 
-  <meta name="description" content="Participate in the National Science Day 2026 Live Quiz at Science Station, ZS Trade Show Chennai. Join via Mentimeter, compete live, and see your name on the leaderboard." />
-<link rel="canonical" href="https://science-station.vercel.app/quiz.html" />
-
-<meta property="og:title" content="National Science Day 2026 Live Quiz – Science Station">
-<meta property="og:description" content="Join the live interactive science quiz at Science Station, ZS Trade Show Chennai. Compete in real time and climb the leaderboard.">
+  <meta name="description" content="Take the Science Station Live Quiz at ZS Trade Show 2026 Chennai. Test your knowledge of Raman Effect, pH, and scientific thinking.">
+<link rel="canonical" href="https://science-station.vercel.app/quiz.html">
+<meta property="og:title" content="Science Station Live Quiz – National Science Day 2026">
+<meta property="og:description" content="Self-paced science quiz with live leaderboard at ZS Trade Show 2026 Chennai.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://science-station.vercel.app/quiz.html">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="quiz.css" />
-  
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "National Science Day 2026 Live Quiz – Science Station",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "location": {
-    "@type": "Place",
-    "name": "ZS Trade Show 2026",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Chennai",
-      "addressCountry": "India"
-    }
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap');
+
+  :root {
+    --bg: #050a12;
+    --surface: #0b1422;
+    --card: #0f1e32;
+    --border: #1a3a5c;
+    --accent: #00d4ff;
+    --accent2: #7b2fff;
+    --accent3: #00ff9d;
+    --text: #c8dff0;
+    --muted: #4a7090;
+    --correct: #00ff9d;
+    --wrong: #ff3860;
+    --gold: #ffd700;
+    --silver: #c0c0c0;
+    --bronze: #cd7f32;
   }
-}
-</script>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Starfield background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(0,212,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 10%, rgba(0,212,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 35%, rgba(123,47,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 75%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 15%, rgba(0,255,157,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 90%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 45%, rgba(0,212,255,0.2) 0%, transparent 100%),
+      radial-gradient(2px 2px at 25% 40%, rgba(0,212,255,0.15) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Grid lines */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #app {
+    width: 100%;
+    max-width: 680px;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .screen {
+    display: none;
+    animation: fadeSlideIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .screen.active { display: block; }
+
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeSlideOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-24px); }
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(0,212,255,0.05), 0 0 0 1px rgba(0,212,255,0.08);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), var(--accent3), transparent);
+  }
+
+  /* ── START SCREEN ── */
+  .atom-icon {
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 8px;
+    animation: spin 20s linear infinite;
+    display: block;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .quiz-label {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(18px, 4vw, 26px);
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.3;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+
+  .meta-pills {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+  }
+  .pill {
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    box-shadow: 0 0 30px rgba(0,212,255,0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(0,212,255,0.5);
+  }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    margin-top: 12px;
+  }
+  .btn-secondary:hover {
+    background: rgba(0,212,255,0.08);
+    transform: translateY(-2px);
+  }
+
+  /* ── PROGRESS ── */
+  .progress-wrap {
+    margin-bottom: 28px;
+  }
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .q-counter {
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 4px;
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  /* ── QUESTION ── */
+  .question-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(17px, 3vw, 22px);
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 28px;
+    color: #e8f4ff;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+  }
+  .option::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .option:hover:not(.disabled) {
+    border-color: var(--accent);
+    color: #fff;
+    transform: translateX(4px);
+    box-shadow: -4px 0 0 var(--accent), 0 0 20px rgba(0,212,255,0.1);
+  }
+  .option:hover:not(.disabled)::before { opacity: 0.04; }
+
+  .opt-letter {
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.2);
+    color: var(--accent);
+    transition: all 0.18s;
+  }
+  .option:hover:not(.disabled) .opt-letter {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+
+  .option.correct {
+    border-color: var(--correct);
+    color: var(--correct);
+    background: rgba(0,255,157,0.06);
+    box-shadow: 0 0 20px rgba(0,255,157,0.15);
+    transform: none;
+  }
+  .option.correct .opt-letter {
+    background: var(--correct);
+    color: var(--bg);
+    border-color: var(--correct);
+  }
+  .option.wrong {
+    border-color: var(--wrong);
+    color: var(--wrong);
+    background: rgba(255,56,96,0.06);
+  }
+  .option.wrong .opt-letter {
+    background: var(--wrong);
+    color: #fff;
+    border-color: var(--wrong);
+  }
+  .option.disabled { cursor: default; pointer-events: none; }
+  .option.faded { opacity: 0.4; }
+
+  /* ── RESULT SCREEN ── */
+  .score-display {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .score-number {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(48px, 12vw, 80px);
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent3), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 8px;
+    animation: countUp 0.6s ease;
+  }
+  @keyframes countUp {
+    from { transform: scale(0.5); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  .score-label {
+    font-size: 18px;
+    color: var(--muted);
+  }
+  .score-msg {
+    margin-top: 12px;
+    font-size: 15px;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  .name-section h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .input-row {
+    display: flex;
+    gap: 10px;
+  }
+  input[type="text"] {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(0,212,255,0.15); }
+  input[type="text"]::placeholder { color: var(--muted); }
+  .btn-submit {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Orbitron', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(0,212,255,0.4); }
+  .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  /* ── LEADERBOARD ── */
+  .leaderboard-section { margin-top: 32px; }
+  .lb-header {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lb-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  .lb-table {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .lb-row {
+    display: grid;
+    grid-template-columns: 42px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    animation: fadeSlideIn 0.4s ease backwards;
+  }
+  .lb-row:nth-child(1) { animation-delay: 0.05s; }
+  .lb-row:nth-child(2) { animation-delay: 0.1s; }
+  .lb-row:nth-child(3) { animation-delay: 0.15s; }
+  .lb-row:nth-child(4) { animation-delay: 0.2s; }
+  .lb-row:nth-child(5) { animation-delay: 0.25s; }
+
+  .lb-row.rank-1 { border-color: var(--gold); background: rgba(255,215,0,0.04); }
+  .lb-row.rank-2 { border-color: var(--silver); background: rgba(192,192,192,0.03); }
+  .lb-row.rank-3 { border-color: var(--bronze); background: rgba(205,127,50,0.03); }
+  .lb-row.highlight { border-color: var(--accent); box-shadow: 0 0 16px rgba(0,212,255,0.15); }
+
+  .lb-rank {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .lb-row.rank-1 .lb-rank { color: var(--gold); }
+  .lb-row.rank-2 .lb-rank { color: var(--silver); }
+  .lb-row.rank-3 .lb-rank { color: var(--bronze); }
+  .lb-row:not(.rank-1):not(.rank-2):not(.rank-3) .lb-rank { color: var(--muted); }
+
+  .lb-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .lb-score {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent3);
+    white-space: nowrap;
+  }
+
+  .empty-lb {
+    text-align: center;
+    color: var(--muted);
+    padding: 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 28px 20px; }
+    .input-row { flex-direction: column; }
+    .btn-submit { width: 100%; }
+  }
+
+  /* Glow pulse on card top border */
+  @keyframes glowPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .card::before { animation: glowPulse 3s ease-in-out infinite; }
+</style>
 </head>
 <body>
-  <nav style="position:fixed; top:0; width:100%; background:#040d1e; padding:14px 30px; z-index:1000;">
-  <a href="index.html" style="color:#00d4ff; text-decoration:none; font-family:'Rajdhani',sans-serif; font-weight:700;">
-    ← Back to Science Station
-  </a>
-</nav>
+<div id="app">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-content">
-      <div class="badge">🔬 National Science Day</div>
-     <h1>National Science Day 2026<br /><span class="accent">Live Science Quiz</span></h1>
-      <p class="hero-sub">Think scientifically. Compete live. See your name on the leaderboard.</p>
-      <p class="hero-body">
-This is the official National Science Day 2026 Live Quiz conducted at Science Station during the ZS
-        Trade Show in Chennai. Powered by Mentimeter, participants can join instantly from their phones and compete
-        in real time on our live leaderboard.
-</p>
-    </div>
-    <div class="hero-decor">
-      <div class="orb orb1"></div>
-      <div class="orb orb2"></div>
-    </div>
-  </section>
-
-  <!-- HOW TO PARTICIPATE -->
-  <section class="how-to">
-    <div class="section-label">INSTRUCTIONS</div>
-    <h2>How to Participate</h2>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-text">Go to <strong>www.menti.com</strong> on your phone or tablet</div>
+  <!-- START SCREEN -->
+  <div id="screen-start" class="screen active">
+    <div class="card">
+      <span class="atom-icon">⚛</span>
+      <div class="quiz-label">National Science Day 2026</div>
+      <h1>Science Station Quiz</h1>
+      <p class="subtitle">Test your knowledge of fundamental science concepts in this fast-paced quiz. Four questions. One chance. Are you ready?</p>
+      <div class="meta-pills">
+        <span class="pill">4 Questions</span>
+        <span class="pill">Self-Paced</span>
+        <span class="pill">Leaderboard</span>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-text">Enter the <strong>quiz code</strong> displayed below</div>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-text">Answer all the questions as quickly and accurately as you can</div>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-text">Watch the <strong>live leaderboard</strong> update in real time at our stall</div>
-      </div>
+      <button class="btn btn-primary" onclick="startQuiz()">INITIATE QUIZ</button>
     </div>
-  </section>
+  </div>
 
-  <!-- QUIZ CODE -->
-  <section class="code-section">
-    <div class="code-label">Enter This Code on menti.com</div>
-    <div class="code-box">
-      <div class="code-inner">1234 5678</div>
-      <div class="code-glow"></div>
-    </div>
-    <p class="code-hint">Open your browser → menti.com → type the code above</p>
-  </section>
-
-  <!-- JOIN BUTTON -->
-  <section class="join-section">
-    <a href="https://www.menti.com" target="_blank" rel="noopener" class="join-btn">
-      <span>Join the Live Quiz</span>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </section>
-
-  <!-- LEADERBOARD -->
-  <section class="leaderboard-section">
-    <div class="lb-inner">
-      <div class="section-label">COMPETITION</div>
-      <h2>Live Leaderboard</h2>
-      <p class="lb-body">
-        Top scorers will appear in real time on the leaderboard displayed at our stall.<br />
-        Test your scientific thinking, challenge your peers, and compete live.<br />
-        The fastest correct answers climb highest — are you ready?
-      </p>
-
-      <p class="lb-body">
-  Top scorers will appear in real time on the leaderboard displayed at our stall.<br />
-  Test your scientific thinking, challenge your peers, and compete live.<br />
-  The fastest correct answers climb highest — are you ready?
-</p>
-
-<p style="margin-top:20px; font-weight:600; color:#00d4ff;">
-  Top 3 participants will be recognized at the stall.
-</p>
-      
-      <div class="lb-podium">
-        <div class="lb-rank lb-rank--2">
-          <div class="lb-crown">🥈</div>
-          <div class="lb-bar" style="height:80px"></div>
-          <div class="lb-pos">2nd</div>
+  <!-- QUESTION SCREEN -->
+  <div id="screen-question" class="screen">
+    <div class="card">
+      <div class="progress-wrap">
+        <div class="progress-header">
+          <span class="q-counter" id="q-counter">QUESTION 1 / 4</span>
+          <span class="q-counter" id="q-score-live">SCORE: 0</span>
         </div>
-        <div class="lb-rank lb-rank--1">
-          <div class="lb-crown">🥇</div>
-          <div class="lb-bar" style="height:120px"></div>
-          <div class="lb-pos">1st</div>
-        </div>
-        <div class="lb-rank lb-rank--3">
-          <div class="lb-crown">🥉</div>
-          <div class="lb-bar" style="height:56px"></div>
-          <div class="lb-pos">3rd</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill" style="width:0%"></div>
         </div>
       </div>
+      <div class="question-text" id="question-text"></div>
+      <div class="options" id="options-container"></div>
     </div>
-  </section>
+  </div>
 
-  <section class="quiz-links">
-  <p style="text-align:center; padding:40px 20px;">
-    Explore the full <a href="index.html">Science Station Exhibition</a>,
-    discover our <a href="exhibits.html">Interactive Science Exhibits</a>,
-    or read insights on our <a href="blog.html">Science Blog</a>.
+  <!-- RESULT SCREEN -->
+  <div id="screen-result" class="screen">
+    <div class="card">
+      <div class="quiz-label">RESULTS</div>
+      <div class="score-display">
+        <span class="score-number" id="final-score-num">0</span>
+        <div class="score-label" id="final-score-label">You scored 0 out of 4</div>
+        <div class="score-msg" id="score-msg"></div>
+      </div>
+
+      <div class="name-section" id="name-section">
+        <h3>Enter Your Name</h3>
+        <div class="input-row">
+          <input type="text" id="player-name" placeholder="Your name..." maxlength="20" />
+          <button class="btn-submit" onclick="submitScore()">SUBMIT</button>
+        </div>
+      </div>
+
+      <div class="leaderboard-section" id="lb-section" style="display:none">
+        <div class="lb-header">🏆 Top 5 Leaderboard</div>
+        <div class="lb-table" id="lb-table"></div>
+         <p style="margin-top:20px; font-weight:600; color:#00d4ff; text-align:center;">
+    Top 3 participants will be recognized at the stall.
   </p>
-</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-line"></div>
-    <p class="footer-title">Science Station – From Lab to Launchpad</p>
-    <p class="footer-sub">Happy National Science Day 🚀</p>
-  </footer>
+        <button class="btn btn-secondary" onclick="playAgain()" style="margin-top:20px;">▶ PLAY AGAIN</button>
+      </div>
+    </div>
+  </div>
 
+</div>
+
+<script>
+  const QUESTIONS = [
+    {
+      question: "What changes during the Raman Effect?",
+      options: ["Speed of light", "Wavelength of scattered light", "Temperature of sample", "Mass of atoms"],
+      correct: 1
+    },
+    {
+      question: "The Raman Effect helps scientists identify:",
+      options: ["Planetary motion", "Molecular structure", "Weather systems", "Ocean currents"],
+      correct: 1
+    },
+    {
+      question: "What is the first step of the scientific method?",
+      options: ["Ask a question", "Form a conclusion", "Publish results", "Conduct experiment"],
+      correct: 0
+    },
+    {
+      question: "What does pH measure?",
+      options: ["Pressure", "Acidity or basicity", "Density", "Speed"],
+      correct: 1
+    }
+  ];
+
+  const LETTERS = ['A','B','C','D'];
+  const SCORE_MSGS = ["Keep studying! 📚","Good effort! 🔬","Great work! 🧪","Perfect score! 🚀"];
+
+  let currentQ = 0;
+  let score = 0;
+  let lastSubmittedName = null;
+
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => {
+      s.classList.remove('active');
+      s.style.animation = '';
+    });
+    const target = document.getElementById(id);
+    target.classList.add('active');
+  }
+
+  function startQuiz() {
+    currentQ = 0;
+    score = 0;
+    lastSubmittedName = null;
+    showScreen('screen-question');
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q = QUESTIONS[currentQ];
+    document.getElementById('q-counter').textContent = `QUESTION ${currentQ + 1} / ${QUESTIONS.length}`;
+    document.getElementById('q-score-live').textContent = `SCORE: ${score}`;
+    document.getElementById('progress-fill').style.width = `${(currentQ / QUESTIONS.length) * 100}%`;
+    document.getElementById('question-text').textContent = q.question;
+
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+    q.options.forEach((opt, i) => {
+      const el = document.createElement('div');
+      el.className = 'option';
+      el.innerHTML = `<span class="opt-letter">${LETTERS[i]}</span><span>${opt}</span>`;
+      el.addEventListener('click', () => selectAnswer(i));
+      container.appendChild(el);
+    });
+  }
+
+  function selectAnswer(chosen) {
+    const q = QUESTIONS[currentQ];
+    const options = document.querySelectorAll('.option');
+    const isCorrect = chosen === q.correct;
+
+    if (isCorrect) score++;
+
+    options.forEach((opt, i) => {
+      opt.classList.add('disabled');
+      if (i === q.correct) {
+        opt.classList.add('correct');
+      } else if (i === chosen && !isCorrect) {
+        opt.classList.add('wrong');
+      } else {
+        opt.classList.add('faded');
+      }
+    });
+
+    setTimeout(() => {
+      currentQ++;
+      if (currentQ < QUESTIONS.length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }, 900);
+  }
+
+  function showResult() {
+    showScreen('screen-result');
+    document.getElementById('final-score-num').textContent = score;
+    document.getElementById('final-score-label').textContent = `You scored ${score} out of ${QUESTIONS.length}`;
+    document.getElementById('score-msg').textContent = SCORE_MSGS[score];
+    document.getElementById('name-section').style.display = 'block';
+    document.getElementById('lb-section').style.display = 'none';
+    document.getElementById('player-name').value = '';
+    document.getElementById('player-name').focus();
+  }
+
+  function submitScore() {
+    const nameInput = document.getElementById('player-name');
+    const name = nameInput.value.trim();
+    if (!name) {
+      nameInput.style.borderColor = 'var(--wrong)';
+      nameInput.placeholder = 'Please enter your name!';
+      setTimeout(() => { nameInput.style.borderColor = ''; nameInput.placeholder = 'Your name...'; }, 1500);
+      return;
+    }
+
+    lastSubmittedName = name;
+    const lb = getLeaderboard();
+    lb.push({ name, score, ts: Date.now() });
+    lb.sort((a, b) => b.score - a.score || a.ts - b.ts);
+    const top5 = lb.slice(0, 5);
+    localStorage.setItem('scienceQuizLB', JSON.stringify(top5));
+
+    document.getElementById('name-section').style.display = 'none';
+    document.getElementById('lb-section').style.display = 'block';
+    renderLeaderboard(name, score);
+  }
+
+  function getLeaderboard() {
+    try { return JSON.parse(localStorage.getItem('scienceQuizLB')) || []; }
+    catch { return []; }
+  }
+
+  function renderLeaderboard(highlightName, highlightScore) {
+    const lb = getLeaderboard();
+    const table = document.getElementById('lb-table');
+    table.innerHTML = '';
+
+    if (lb.length === 0) {
+      table.innerHTML = '<div class="empty-lb">No scores yet. Be the first!</div>';
+      return;
+    }
+
+    lb.forEach((entry, i) => {
+      const row = document.createElement('div');
+      const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
+      const isHighlight = entry.name === highlightName && entry.score === highlightScore;
+      row.className = `lb-row ${rankClass} ${isHighlight ? 'highlight' : ''}`;
+      const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i + 1}`;
+      row.innerHTML = `
+        <span class="lb-rank">${medal}</span>
+        <span class="lb-name">${escHtml(entry.name)}</span>
+        <span class="lb-score">${entry.score}/${QUESTIONS.length}</span>
+      `;
+      row.style.animationDelay = `${i * 0.06}s`;
+      table.appendChild(row);
+    });
+  }
+
+  function escHtml(str) {
+    return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  function playAgain() {
+    startQuiz();
+  }
+
+  // Allow Enter key to submit name
+  document.getElementById('player-name').addEventListener('keydown', e => {
+    if (e.key === 'Enter') submitScore();
+  });
+</script>
 </body>
 </html>

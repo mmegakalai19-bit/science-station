@@ -727,9 +727,9 @@ function submitScore() {
     timestamp: Date.now()
   };
 
-  const scoresRef = ref(db, "scores");
-  push(scoresRef, scoreData);
-
+ const scoresRef = window.ref(window.db, "scores");
+window.push(scoresRef, scoreData);
+  
   document.getElementById('name-section').style.display = 'none';
   document.getElementById('lb-section').style.display = 'block';
 

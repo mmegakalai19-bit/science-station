@@ -712,7 +712,7 @@ window.onValue = onValue;
     document.getElementById('player-name').focus();
   }
 
- function submitScore() {
+function submitScore() {
   const nameInput = document.getElementById('player-name');
   const name = nameInput.value.trim();
 
@@ -720,6 +720,63 @@ window.onValue = onValue;
     alert("Please enter your name");
     return;
   }
+
+  const scoreData = {
+    name: name,
+    score: score,
+    timestamp: Date.now()
+  };
+
+  const scoresRef = ref(db, "scores");
+  push(scoresRef, scoreData);
+
+  document.getElementById('name-section').style.display = 'none';
+  document.getElementById('lb-section').style.display = 'block';
+
+  listenToLeaderboard();
+}
+
+  function listenToLeaderboard() {
+  const scoresRef = ref(db, "scores");
+
+  onValue(scoresRef, (snapshot) => {
+    const data = snapshot.val();
+    const table = document.getElementById("lb-table");
+    table.innerHTML = "";
+
+    if (!data) {
+      table.innerHTML = "<div class='empty-lb'>No scores yet</div>";
+      return;
+    }
+
+    const scoresArray = Object.values(data);
+
+    scoresArray.sort((a, b) =>
+      b.score - a.score || a.timestamp - b.timestamp
+    );
+
+    const top5 = scoresArray.slice(0, 5);
+
+    top5.forEach((entry, index) => {
+      const row = document.createElement("div");
+      row.className = "lb-row";
+
+      const medal =
+        index === 0 ? "🥇" :
+        index === 1 ? "🥈" :
+        index === 2 ? "🥉" :
+        `#${index + 1}`;
+
+      row.innerHTML = `
+        <span class="lb-rank">${medal}</span>
+        <span class="lb-name">${entry.name}</span>
+        <span class="lb-score">${entry.score}/4</span>
+      `;
+
+      table.appendChild(row);
+    });
+  });
+}
 
   const scoreData = {
     name: name,
@@ -790,16 +847,7 @@ window.onValue = onValue;
   });
 </script>
 
-  <!-- Firebase Script -->
-<script type="module">
-   (firebase code here)
-</script>
-
-<!-- Your existing quiz script -->
-<script>
-   const QUESTIONS = [...]
-   ...
-</script>
+ 
   
 </body>
 </html>

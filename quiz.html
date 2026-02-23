@@ -583,6 +583,30 @@
 
 </div>
 
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { getDatabase, ref, push, onValue } 
+from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBrJ_ZvcvGBbxjEp1_Eo1nlKtJIw0FoRSE",
+  authDomain: "science-station-quiz.firebaseapp.com",
+  databaseURL: "https://science-station-quiz-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "science-station-quiz",
+  storageBucket: "science-station-quiz.firebasestorage.app",
+  messagingSenderId: "792146521045",
+  appId: "1:792146521045:web:c03f094a481e2db74d6b5c"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+window.db = db;
+window.ref = ref;
+window.push = push;
+window.onValue = onValue;
+</script>
+  
 <script>
   const QUESTIONS = [
     {
@@ -754,5 +778,17 @@
     if (e.key === 'Enter') submitScore();
   });
 </script>
+
+  <!-- Firebase Script -->
+<script type="module">
+   (firebase code here)
+</script>
+
+<!-- Your existing quiz script -->
+<script>
+   const QUESTIONS = [...]
+   ...
+</script>
+  
 </body>
 </html>

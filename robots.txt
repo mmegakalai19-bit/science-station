@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mmegakalai19-bit.github.io/science-station/sitemap.xml
+Sitemap: https://science-station.vercel.app/sitemap.xml

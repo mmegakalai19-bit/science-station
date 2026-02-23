@@ -47,6 +47,7 @@ body {
   overflow: hidden;
   background: linear-gradient(160deg, #040d1e 0%, #071835 55%, #051528 100%);
   text-align: center;
+   padding-top: 100px;
 }
 
 /* Subtle grid background */

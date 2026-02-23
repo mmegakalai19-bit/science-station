@@ -3,105 +3,611 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>
-Science Station Exhibits | National Science Day 2026 Chennai – ZS Trade Show
-</title>
+  <title>Science Station Exhibits | National Science Day 2026 Chennai – ZS Trade Show</title>
 
-  <meta name="description" content="Explore Science Station exhibits at National Science Day 2026 in Chennai, presented at ZS Trade Show 2026.
-    Featuring Raman Effect demonstrations, immersive science video experience, Raman Effect conceptual exploration,
-    and science communication exhibits." />
+  <meta name="description" content="Explore Science Station exhibits at National Science Day 2026 in Chennai, presented at ZS Trade Show 2026. Featuring Raman Effect demonstrations, immersive science video experience, Raman Effect conceptual exploration, and science communication exhibits." />
+  <link rel="canonical" href="https://science-station.vercel.app/exhibits.html" />
+  <meta property="og:title" content="Science Station Exhibits – National Science Day 2026 Chennai">
+  <meta property="og:description" content="Raman Effect, VR science, titration experiments and interactive exhibits at ZS Trade Show 2026 Chennai.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://science-station.vercel.app/exhibits.html">
+  <meta property="og:image" content="https://science-station.vercel.app/favicon.png">
 
-<link rel="canonical" href="https://science-station.vercel.app/exhibits.html" />
-
-<meta property="og:title" content="Science Station Exhibits – National Science Day 2026 Chennai">
-<meta property="og:description" content="Raman Effect, VR science, titration experiments and interactive exhibits at ZS Trade Show 2026 Chennai.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://science-station.vercel.app/exhibits.html">
-<meta property="og:image" content="https://science-station.vercel.app/favicon.png">
-  
-  <link rel="stylesheet" href="exhibits.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "Event",
- "name": "Science Station Exhibits",
- "description": "Interactive exhibits including Raman Effect demonstration, VR science experiences, and live titration experiments at National Science Day 2026 in Chennai.",
- "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
- "location": {
-   "@type": "Place",
-   "name": "ZS Trade Show 2026",
-   "address": {
-     "@type": "PostalAddress",
-     "addressLocality": "Chennai",
-     "addressCountry": "India"
-   }
- }
-}
-</script>
-<style>
-  .explore-more {
-  padding: var(--section-pad) clamp(2rem, 6vw, 8rem);
-  background: rgba(10, 10, 20, 0.5);
-  text-align: left;
-}
 
-.explore-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Science Station Exhibits",
+    "description": "Interactive exhibits including Raman Effect demonstration, VR science experiences, and live titration experiments at National Science Day 2026 in Chennai.",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "ZS Trade Show 2026",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chennai",
+        "addressCountry": "India"
+      }
+    }
+  }
+  </script>
 
-.explore-more h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.2rem);
-  color: #fff;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-}
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.explore-more p {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.8;
-}
-</style>
-  
+    :root {
+      --bg:           #080c10;
+      --surface:      #0d1318;
+      --surface-2:    #111820;
+      --border:       rgba(255,255,255,0.07);
+      --text:         #e8edf2;
+      --muted:        #6b7a8d;
+      --accent-teal:  #00d4b4;
+      --accent-blue:  #2d7dff;
+      --accent-gold:  #f5c842;
+      --accent-rose:  #ff5e78;
+      --accent-violet:#a78bfa;
+
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+
+      --pad-x:        8vw;
+      --section-pad:  clamp(64px, 8vw, 110px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: clamp(15px, 1.05vw, 17px);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Shared Utilities ── */
+    .btn {
+      display: inline-block;
+      padding: 13px 32px;
+      background: var(--accent-teal);
+      color: #000;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    }
+    .btn:hover {
+      background: #00ffe6;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,212,180,0.35);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn--ghost:hover {
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-2px);
+      box-shadow: none;
+      color: #fff;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px var(--pad-x);
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav__logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.06em;
+      color: #fff;
+    }
+
+    .nav__links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+    .nav__links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav__links a:hover,
+    .nav__links a.active { color: var(--accent-teal); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 120px var(--pad-x) 80px;
+      overflow: hidden;
+    }
+
+    .hero__noise {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 200px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .hero__grid-lines {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .hero__orbs { position: absolute; inset: 0; pointer-events: none; }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.18;
+      animation: orb-drift 12s ease-in-out infinite alternate;
+    }
+    .orb--1 { width: 55vw; height: 55vw; background: var(--accent-teal);   top: -20%; right: -15%; animation-duration: 14s; }
+    .orb--2 { width: 35vw; height: 35vw; background: var(--accent-blue);   bottom: 5%; left: 5%;   animation-duration: 10s; animation-delay: -4s; }
+    .orb--3 { width: 25vw; height: 25vw; background: var(--accent-violet); top: 40%; right: 35%;   animation-duration: 18s; animation-delay: -7s; }
+
+    @keyframes orb-drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(3%, 5%) scale(1.08); }
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .hero__label {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-teal);
+      border: 1px solid rgba(0,212,180,0.35);
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    /* KEY FIX: Hero h1 scaled down from clamp(3rem,7vw,6.5rem) */
+    .hero__h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 22px;
+    }
+    .hero__h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__sub {
+      font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+      color: var(--muted);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 40px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── EXHIBITS INTRO ── */
+    .exhibits-intro {
+      padding: 52px var(--pad-x);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .exhibits-intro p {
+      max-width: 860px;
+      font-size: clamp(0.93rem, 1.25vw, 1.08rem);
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    /* ── EXHIBIT SECTIONS — SHARED ── */
+    .exhibit {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: clamp(36px, 5vw, 80px);
+      padding: var(--section-pad) var(--pad-x);
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+      transition: background 0.4s;
+    }
+    .exhibit:hover { background: rgba(255,255,255,0.015); }
+
+    .exhibit--alt .exhibit__inner { order: 2; }
+    .exhibit--alt .exhibit__visual { order: 1; }
+
+    .exhibit__number {
+      position: absolute;
+      top: var(--section-pad);
+      right: var(--pad-x);
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 9vw, 10rem);
+      font-weight: 800;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      user-select: none;
+      pointer-events: none;
+    }
+    .exhibit--alt .exhibit__number { right: auto; left: var(--pad-x); }
+
+    .exhibit__tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-teal);
+      margin-bottom: 16px;
+    }
+    .exhibit--raman .exhibit__tag { color: var(--accent-blue); }
+    .exhibit--meme  .exhibit__tag { color: var(--accent-rose); }
+
+    .exhibit__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    /* h2 inside exhibit (for first exhibit which uses plain h2) */
+    .exhibit h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .exhibit__desc {
+      color: var(--muted);
+      font-size: clamp(0.92rem, 1.15vw, 1.05rem);
+      line-height: 1.85;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+
+    .exhibit__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .exhibit__meta span {
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 2px;
+      font-weight: 500;
+    }
+
+    .exhibit__visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+    }
+
+    .viz {
+      position: relative;
+      width: 280px;
+      height: 280px;
+    }
+
+    /* ── VIZ 1 — VR Rings ── */
+    .viz--vr { display: flex; align-items: center; justify-content: center; }
+
+    .vr-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid;
+      animation: ring-spin linear infinite;
+      opacity: 0.7;
+    }
+    .vr-ring--1 { width: 260px; height: 260px; border-color: rgba(0,212,180,0.5);  animation-duration: 14s; }
+    .vr-ring--2 { width: 185px; height: 185px; border-color: rgba(45,125,255,0.5); animation-duration: 9s; animation-direction: reverse; transform: rotate(60deg); }
+    .vr-ring--3 { width: 115px; height: 115px; border-color: rgba(167,139,250,0.5);animation-duration: 5s; }
+
+    @keyframes ring-spin { to { transform: rotateZ(360deg); } }
+
+    .vr-core {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #00ffe6, #2d7dff);
+      box-shadow: 0 0 36px rgba(0,212,180,0.7), 0 0 70px rgba(45,125,255,0.4);
+      animation: core-pulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes core-pulse {
+      from { transform: scale(1);    box-shadow: 0 0 28px rgba(0,212,180,0.6), 0 0 55px rgba(45,125,255,0.3); }
+      to   { transform: scale(1.15); box-shadow: 0 0 50px rgba(0,212,180,0.9), 0 0 90px rgba(45,125,255,0.5); }
+    }
+
+    /* ── VIZ 2 — Raman ── */
+    .viz--raman { display: flex; align-items: center; justify-content: center; }
+
+    .laser-beam {
+      position: absolute;
+      width: 210px; height: 3px;
+      background: linear-gradient(90deg, rgba(45,125,255,0), rgba(45,125,255,0.9), rgba(45,125,255,0));
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 2px;
+      animation: beam-pulse 2.5s ease-in-out infinite alternate;
+      box-shadow: 0 0 14px rgba(45,125,255,0.7);
+    }
+    @keyframes beam-pulse {
+      from { opacity: 0.7; }
+      to   { opacity: 1; box-shadow: 0 0 26px rgba(45,125,255,0.9); }
+    }
+
+    .scatter-dot {
+      position: absolute;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent-teal);
+      box-shadow: 0 0 12px var(--accent-teal);
+    }
+    .scatter-dot--1 { top:30%; right:25%; animation: scatter-1 3s ease-in-out infinite alternate; }
+    .scatter-dot--2 { top:60%; right:20%; animation: scatter-2 3.5s ease-in-out infinite alternate; background: var(--accent-violet); box-shadow: 0 0 12px var(--accent-violet); }
+    .scatter-dot--3 { top:20%; left:25%; animation: scatter-3 2.8s ease-in-out infinite alternate; background: var(--accent-gold);   box-shadow: 0 0 12px var(--accent-gold); }
+    .scatter-dot--4 { bottom:25%; left:30%; animation: scatter-4 4s ease-in-out infinite alternate;  background: var(--accent-rose);   box-shadow: 0 0 12px var(--accent-rose); }
+
+    @keyframes scatter-1 { from { opacity:.4; transform:translate(0,0); }    to { opacity:1; transform:translate(12px,-14px); } }
+    @keyframes scatter-2 { from { opacity:.4; transform:translate(0,0); }    to { opacity:1; transform:translate(16px,10px); } }
+    @keyframes scatter-3 { from { opacity:.4; transform:translate(0,0); }    to { opacity:1; transform:translate(-12px,-12px); } }
+    @keyframes scatter-4 { from { opacity:.4; transform:translate(0,0); }    to { opacity:1; transform:translate(-10px,14px); } }
+
+    .molecule { position:absolute; width:70px; height:70px; top:50%; left:50%; transform:translate(-50%,-50%); }
+    .mol-atom { position:absolute; border-radius:50%; }
+    .mol-atom--c { width:26px; height:26px; background:rgba(45,125,255,0.85); top:50%; left:50%; transform:translate(-50%,-50%); box-shadow:0 0 18px rgba(45,125,255,0.6); }
+    .mol-atom--a { width:16px; height:16px; background:rgba(0,212,180,0.8);   top:0;   left:50%; transform:translateX(-50%); }
+    .mol-atom--b { width:16px; height:16px; background:rgba(167,139,250,0.8); bottom:0;left:50%; transform:translateX(-50%); }
+    .mol-bond { position:absolute; left:50%; width:2px; background:rgba(255,255,255,0.2); transform-origin:top center; }
+    .mol-bond--1 { height:22px; top:18px; transform:translateX(-50%); }
+    .mol-bond--2 { height:22px; top:50%;  transform:translateX(-50%); }
+
+    /* ── VIZ 3 — Meme ── */
+    .viz--meme { display:flex; align-items:center; justify-content:center; gap:14px; }
+
+    .meme-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .meme-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.15); }
+    .meme-card--1 { width: 105px; padding: 18px; }
+    .meme-card--2 { width: 76px; height: 76px; align-items:center; justify-content:center; border-color: rgba(0,212,180,0.4); }
+    .meme-card--3 { width: 76px; height: 76px; align-items:center; justify-content:center; border-color: rgba(255,94,120,0.4); }
+
+    .meme-card__bar {
+      height: 7px;
+      background: linear-gradient(90deg, var(--accent-rose), rgba(255,94,120,0.3));
+      border-radius: 4px;
+      animation: bar-grow 3s ease-in-out infinite alternate;
+    }
+    .meme-card__bar:nth-child(2) { animation-delay: 0.5s; background: linear-gradient(90deg, var(--accent-gold), rgba(245,200,66,0.3)); }
+    .meme-card__bar:nth-child(3) { animation-delay: 1s;   background: linear-gradient(90deg, var(--accent-teal), rgba(0,212,180,0.3)); }
+    @keyframes bar-grow { from { opacity:.5; } to { opacity:1; } }
+
+    .meme-card__label { font-family: var(--font-display); font-weight: 800; font-size: 0.85rem; letter-spacing: 0.1em; }
+    .meme-card--2 .meme-card__label { color: var(--accent-teal); }
+    .meme-card--3 .meme-card__label { color: var(--accent-rose); }
+
+    /* ── CLOSING ── */
+    .closing {
+      position: relative;
+      padding: var(--section-pad) var(--pad-x);
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .closing__bg-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 15vw, 18rem);
+      font-weight: 800;
+      color: rgba(255,255,255,0.025);
+      letter-spacing: 0.05em;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .closing__content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+
+    .closing__tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-violet);
+      margin-bottom: 20px;
+    }
+
+    .closing__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.8vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 22px;
+    }
+
+    .closing__desc {
+      color: var(--muted);
+      font-size: clamp(0.93rem, 1.15vw, 1.05rem);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 44px;
+    }
+
+    .closing__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ── EXHIBITS LINKS ── */
+    .exhibits-links {
+      padding: 40px var(--pad-x);
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .exhibits-links p {
+      max-width: 860px;
+      font-size: clamp(0.88rem, 1.15vw, 0.98rem);
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .exhibits-links a {
+      color: var(--accent-teal);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .exhibits-links a:hover {
+      opacity: 0.75;
+      text-decoration: underline;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 36px var(--pad-x);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .footer__tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .exhibit {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .exhibit--alt .exhibit__inner,
+      .exhibit--alt .exhibit__visual { order: unset; }
+      .exhibit__number { font-size: 4rem; top: 20px; right: 5vw; }
+      .exhibit--alt .exhibit__number { right: 5vw; left: auto; }
+      .nav__links { gap: 18px; }
+    }
+
+    @media (max-width: 600px) {
+      :root { --pad-x: 6vw; }
+      .nav__links { display: none; }
+      .hero { min-height: 70vh; padding: 100px 6vw 60px; }
+      .exhibit { padding: 60px 6vw; }
+      .closing { padding: 60px 6vw; }
+      .footer { flex-direction: column; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ─────────── NAV ─────────── -->
+  <!-- NAV -->
   <nav class="nav" aria-label="Site navigation">
     <div class="nav__logo">Science Station</div>
     <ul class="nav__links">
-      <<li><a href="index.html">Home</a></li>
-<li><a href="exhibits.html" class="active">Exhibits</a></li>
-<li><a href="quiz.html">Quiz</a></li>
-<li><a href="blog.html">Blog</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="exhibits.html" class="active">Exhibits</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
   <main>
 
-    <!-- ─────────── 1. HERO ─────────── -->
+    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero__noise"></div>
       <div class="hero__grid-lines"></div>
-
       <div class="hero__content">
         <span class="hero__label">Exhibits 2025</span>
         <h1 id="hero-heading" class="hero__h1">
-Science Station Exhibits<br />
-<em>National Science Day 2026</em>
-</h1>
+          Science Station Exhibits<br />
+          <em>National Science Day 2026</em>
+        </h1>
         <p class="hero__sub">Where curiosity becomes interaction.</p>
         <a href="#vr" class="btn">Explore Exhibits ↓</a>
       </div>
-
       <div class="hero__orbs" aria-hidden="true">
         <div class="orb orb--1"></div>
         <div class="orb orb--2"></div>
@@ -109,27 +615,28 @@ Science Station Exhibits<br />
       </div>
     </section>
 
+    <!-- EXHIBITS INTRO -->
     <section class="exhibits-intro">
-  <p>
-    Science Station presents a series of interactive exhibits at National Science Day 2026 in Chennai,
-    as part of ZS Trade Show 2026. From immersive Virtual Reality science simulations to live acid–base titration
-    demonstrations and conceptual Raman Effect explorations, each exhibit is designed to transform scientific theory
-    into hands-on experience.
-  </p>
-</section>
+      <p>
+        Science Station presents a series of interactive exhibits at National Science Day 2026 in Chennai,
+        as part of ZS Trade Show 2026. From immersive Virtual Reality science simulations to live acid–base titration
+        demonstrations and conceptual Raman Effect explorations, each exhibit is designed to transform scientific theory
+        into hands-on experience.
+      </p>
+    </section>
 
-    <!-- ─────────── 2.  vdo  ─────────── -->
+    <!-- EXHIBIT 01 — Visual Science Experience -->
     <section class="exhibit exhibit--vr" id="vr" aria-labelledby="vr-heading">
       <div class="exhibit__number" aria-hidden="true">01</div>
       <div class="exhibit__inner">
         <div class="exhibit__tag">Immersive Science Video</div>
-              <h2>Visual Science Experience</h2>
+        <h2>Visual Science Experience</h2>
         <p class="exhibit__desc">
           Experience science through curated high-impact visual storytelling. Our immersive
-          science video explores molecular interactions, optical phenomena like the Raman Effect, and real-world 
-          scientific applications through dynamic animations and guided explanations. Designed to make abstract scientific 
+          science video explores molecular interactions, optical phenomena like the Raman Effect, and real-world
+          scientific applications through dynamic animations and guided explanations. Designed to make abstract scientific
           principles intuitive and memorable.
-</p>
+        </p>
         <div class="exhibit__meta">
           <span>Duration: ~15 min</span>
           <span>All ages welcome</span>
@@ -146,9 +653,7 @@ Science Station Exhibits<br />
       </div>
     </section>
 
-   
-
-    <!-- ─────────── 3. RAMAN ─────────── -->
+    <!-- EXHIBIT 03 — Raman -->
     <section class="exhibit exhibit--raman" id="raman" aria-labelledby="raman-heading">
       <div class="exhibit__number" aria-hidden="true">03</div>
       <div class="exhibit__inner">
@@ -186,7 +691,7 @@ Science Station Exhibits<br />
       </div>
     </section>
 
-    <!-- ─────────── 5. MEME ─────────── -->
+    <!-- EXHIBIT 04 — Meme -->
     <section class="exhibit exhibit--meme exhibit--alt" id="meme" aria-labelledby="meme-heading">
       <div class="exhibit__number" aria-hidden="true">04</div>
       <div class="exhibit__inner">
@@ -223,7 +728,7 @@ Science Station Exhibits<br />
       </div>
     </section>
 
-    <!-- ─────────── 6. CLOSING ─────────── -->
+    <!-- CLOSING -->
     <section class="closing" id="closing" aria-labelledby="closing-heading">
       <div class="closing__bg-text" aria-hidden="true">SCIENCE</div>
       <div class="closing__content">
@@ -242,17 +747,18 @@ Science Station Exhibits<br />
       </div>
     </section>
 
+    <!-- EXHIBITS LINKS -->
     <section class="exhibits-links">
-  <p>
-    Learn more about the full <a href="index.html">Science Station Exhibition</a>, 
-    read our <a href="blog.html">Science Communication Blog</a>, 
-    or participate in the <a href="quiz.html">National Science Day Quiz</a>.
-  </p>
-</section>
+      <p>
+        Learn more about the full <a href="index.html">Science Station Exhibition</a>,
+        read our <a href="blog.html">Science Communication Blog</a>,
+        or participate in the <a href="quiz.html">National Science Day Quiz</a>.
+      </p>
+    </section>
 
   </main>
 
-  <!-- ─────────── FOOTER ─────────── -->
+  <!-- FOOTER -->
   <footer class="footer">
     <p>© 2025 Science Station. All rights reserved.</p>
     <p class="footer__tagline">Curiosity, uncontained.</p>

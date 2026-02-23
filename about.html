@@ -133,8 +133,16 @@
       font-weight: 800;
       font-size: clamp(2rem, 5vw, 3.5rem);
       line-height: 1.15;
-      letter-spacing: -.02em;
+      letter-spacing: .01em;
+      text-transform: uppercase;
       color: var(--text-hi);
+    }
+    .hero__title span {
+      color: var(--accent);
+      text-shadow:
+        0 0 20px rgba(0, 229, 255, 0.8),
+        0 0 60px rgba(0, 229, 255, 0.4),
+        0 0 100px rgba(0, 229, 255, 0.2);
     }
     .hero__sub {
       margin-top: 1.2rem;
@@ -158,29 +166,34 @@
     .section { padding: 80px 5vw; }
     .section--alt { background: var(--bg-alt); }
 
+    /* Numbered sections: narrow label col + content col */
     .section__inner {
       display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 0 3vw;
+      grid-template-columns: 48px 1fr;
+      gap: 0 28px;
       max-width: 1100px;
       margin: 0 auto;
+      align-items: start;
     }
 
-    /* For sections without a label number */
+    /* Unlabelled sections: single centred column */
     .section__inner--no-label {
-      grid-template-columns: 1fr;
+      display: block;
       max-width: 860px;
       margin: 0 auto;
     }
 
+    /* The number badge */
     .section__label {
       font-family: var(--font-head);
-      font-size: 3.5rem;
+      font-size: .75rem;
       font-weight: 800;
       line-height: 1;
       color: var(--text-lo);
-      letter-spacing: -.04em;
-      padding-top: .2em;
+      letter-spacing: .1em;
+      margin-top: .72em;
+      text-align: right;
+      white-space: nowrap;
     }
 
     .section__title {
@@ -402,7 +415,7 @@
 
     <div class="hero__content">
       <p class="hero__eyebrow">Who We Are</p>
-      <h1 class="hero__title">About Science Station – National Science Day 2026 Interactive Exhibition</h1>
+      <h1 class="hero__title">About <span>Science</span> <span>Station</span> – National Science Day 2026 Interactive Exhibition</h1>
       <p class="hero__sub">Reimagining how science is experienced.</p>
       <div class="hero__line" aria-hidden="true"></div>
     </div>
@@ -412,7 +425,7 @@
 
     <!-- Intro -->
     <section class="section">
-      <div class="section__inner--no-label section__inner">
+      <div class="section__inner--no-label">
         <div class="section__body">
           <p class="section__text section__text--large">
             Science Station is an interactive science exhibition presented during National Science Day 2026 in Chennai. Designed to transform scientific learning into an immersive experience, the initiative features Raman Effect demonstrations, live titration experiments, virtual reality simulations, and hands-on scientific engagement for students and visitors.
@@ -426,7 +439,7 @@
 
     <!-- Commemoration -->
     <section class="section section--alt">
-      <div class="section__inner--no-label section__inner">
+      <div class="section__inner--no-label">
         <div class="section__body">
           <p class="section__text">
             National Science Day commemorates the discovery of the Raman Effect by Sir C.V. Raman — a discovery that reshaped modern physics. While the day celebrates scientific achievement, Science Station transforms that celebration into participation, allowing visitors to experience the principles behind the discovery firsthand.
@@ -545,7 +558,7 @@
 
     <!-- Explore More -->
     <section class="section">
-      <div class="section__inner--no-label section__inner">
+      <div class="section__inner--no-label">
         <div class="section__body">
           <h2 class="section__title">Explore More</h2>
           <p class="section__text">

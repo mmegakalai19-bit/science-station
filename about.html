@@ -4,20 +4,389 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Science Station | National Science Day 2026 Interactive Science Exhibition Chennai</title>
-
-  <meta name="description" content="Learn about Science Station, an interactive science exhibition presented at National Science Day 2026 in Chennai.
-    Featuring Raman Effect demonstrations, live titration experiments, VR science experiences, and hands-on exhibits.">
-  
-  <link rel="stylesheet" href="about.css" />
+  <meta name="description" content="Learn about Science Station, an interactive science exhibition presented at National Science Day 2026 in Chennai. Featuring Raman Effect demonstrations, live titration experiments, VR science experiences, and hands-on exhibits.">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
   <link rel="canonical" href="https://science-station.vercel.app/about.html" />
+
+  <style>
+    /* ── RESET ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── TOKENS ──────────────────────────────────── */
+    :root {
+      --bg:         #080c10;
+      --bg-alt:     #0c1118;
+      --surface:    #111820;
+      --border:     rgba(255,255,255,.07);
+
+      --accent:     #00e5ff;
+      --accent2:    #7b6ef6;
+      --text-hi:    #f0f4f8;
+      --text-mid:   #8fa0b4;
+      --text-lo:    #445566;
+
+      --font-head:  'Syne', sans-serif;
+      --font-body:  'DM Sans', sans-serif;
+
+      --ease:       cubic-bezier(.25,.46,.45,.94);
+      --radius:     6px;
+    }
+
+    /* ── BASE ─────────────────────────────────────── */
+    body {
+      background: var(--bg);
+      color: var(--text-hi);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    .nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 5vw;
+      z-index: 10;
+    }
+    .nav__brand {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .nav__links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    .nav__links a {
+      color: var(--text-mid);
+      text-decoration: none;
+      font-size: .85rem;
+      letter-spacing: .04em;
+      transition: color .3s var(--ease);
+    }
+    .nav__links a:hover,
+    .nav__active { color: var(--text-hi) !important; }
+
+    /* ── HERO ─────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 5vw 80px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero__grid-overlay {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero__glow {
+      position: absolute;
+      top: -10%;
+      left: 30%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(0,229,255,.10) 0%, transparent 70%);
+      pointer-events: none;
+      animation: glow-pulse 6s ease-in-out infinite alternate;
+    }
+    @keyframes glow-pulse {
+      from { opacity: .6; transform: scale(1); }
+      to   { opacity: 1;  transform: scale(1.12); }
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      animation: fade-up .9s var(--ease) both;
+    }
+    .hero__eyebrow {
+      font-size: .75rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .hero__title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      color: var(--text-hi);
+    }
+    .hero__sub {
+      margin-top: 1.2rem;
+      font-size: clamp(.95rem, 1.8vw, 1.2rem);
+      font-weight: 300;
+      color: var(--text-mid);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero__line {
+      margin-top: 2.5rem;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── SECTIONS ─────────────────────────────────── */
+    .section { padding: 80px 5vw; }
+    .section--alt { background: var(--bg-alt); }
+
+    .section__inner {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 0 3vw;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* For sections without a label number */
+    .section__inner--no-label {
+      grid-template-columns: 1fr;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section__label {
+      font-family: var(--font-head);
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text-lo);
+      letter-spacing: -.04em;
+      padding-top: .2em;
+    }
+
+    .section__title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      margin-bottom: 1.8rem;
+      color: var(--text-hi);
+    }
+
+    .section__text {
+      color: var(--text-mid);
+      font-size: clamp(.9rem, 1.4vw, 1.05rem);
+      max-width: 760px;
+      margin-bottom: 1.4rem;
+      line-height: 1.8;
+    }
+    .section__text--large {
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--text-hi);
+      font-weight: 300;
+    }
+
+    .section__text a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .section__text a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── CARDS ────────────────────────────────────── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-top: 2.5rem;
+      max-width: 100%;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.6rem 1.8rem;
+      transition: border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity .35s var(--ease);
+    }
+    .card:hover {
+      border-color: rgba(0,229,255,.2);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,229,255,.05);
+    }
+    .card:hover::before { opacity: 1; }
+
+    .card__icon {
+      font-size: 1.7rem;
+      margin-bottom: .9rem;
+      display: block;
+    }
+    .card__title {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-hi);
+      margin-bottom: .5rem;
+    }
+    .card__desc {
+      font-size: .875rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* ── PULL QUOTE ───────────────────────────────── */
+    .pull-quote {
+      margin-top: 3rem;
+      padding: 1.6rem 2rem;
+      border-left: 3px solid var(--accent);
+      max-width: 600px;
+    }
+    .pull-quote blockquote {
+      font-family: var(--font-head);
+      font-size: clamp(1.05rem, 2vw, 1.4rem);
+      font-weight: 700;
+      line-height: 1.45;
+      color: var(--text-hi);
+      margin-bottom: .7rem;
+    }
+    .pull-quote cite {
+      font-size: .85rem;
+      color: var(--accent);
+      letter-spacing: .05em;
+    }
+
+    /* ── VISION SECTION ────────────────────────────── */
+    .section--vision {
+      position: relative;
+      overflow: hidden;
+    }
+    .vision__glow {
+      position: absolute;
+      bottom: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(123,110,246,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 48px 5vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      text-align: center;
+    }
+    .footer__brand {
+      font-family: var(--font-head);
+      font-size: .9rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .footer__copy {
+      font-size: .82rem;
+      color: var(--text-lo);
+    }
+
+    /* ── ANIMATIONS ────────────────────────────────── */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fade-up .7s var(--ease) forwards;
+    }
+
+    .section {
+      animation: fade-up .8s var(--ease) both;
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+
+      .section { padding: 60px 6vw; }
+
+      .section__inner {
+        grid-template-columns: 1fr;
+      }
+      .section__label {
+        font-size: 2rem;
+        margin-bottom: .4rem;
+      }
+
+      .hero {
+        min-height: 70vh;
+        padding: 100px 6vw 60px;
+      }
+
+      .hero__title {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      body { font-size: 17px; }
+      .section { padding: 100px 6vw; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════
-       HERO
-  ════════════════════════════════════════════════ -->
+  <!-- HERO -->
   <header class="hero">
     <div class="hero__grid-overlay" aria-hidden="true"></div>
     <div class="hero__glow" aria-hidden="true"></div>
@@ -25,57 +394,49 @@
     <nav class="nav">
       <span class="nav__brand">Science Station</span>
       <ul class="nav__links">
-       <li><a href="index.html">Home</a></li>
-       <li><a href="exhibits.html">Exhibits</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="exhibits.html">Exhibits</a></li>
         <li><a href="about.html" class="nav__active">About</a></li>
-        <li><a href="#" class="nav__active">About</a></li>
       </ul>
     </nav>
 
     <div class="hero__content">
       <p class="hero__eyebrow">Who We Are</p>
-      <h1 class="hero__title">
-About Science Station – National Science Day 2026 Interactive Exhibition
-</h1>
+      <h1 class="hero__title">About Science Station – National Science Day 2026 Interactive Exhibition</h1>
       <p class="hero__sub">Reimagining how science is experienced.</p>
       <div class="hero__line" aria-hidden="true"></div>
     </div>
-
   </header>
 
   <main>
 
+    <!-- Intro -->
     <section class="section">
-  <div class="section__inner">
-    <div class="section__body">
+      <div class="section__inner--no-label section__inner">
+        <div class="section__body">
+          <p class="section__text section__text--large">
+            Science Station is an interactive science exhibition presented during National Science Day 2026 in Chennai. Designed to transform scientific learning into an immersive experience, the initiative features Raman Effect demonstrations, live titration experiments, virtual reality simulations, and hands-on scientific engagement for students and visitors.
+          </p>
+          <p class="section__text">
+            Presented as part of the ZS Trade Show 2026, Science Station bridges traditional laboratory concepts with digital innovation, making science accessible, experiential, and intellectually stimulating.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <p class="section__text section__text--large">
-        Science Station is an interactive science exhibition presented during National Science Day 2026 in Chennai. Designed to transform scientific learning into an immersive experience, the initiative features Raman Effect demonstrations, live titration experiments, virtual reality simulations, and hands-on scientific engagement for students and visitors.
-      </p>
+    <!-- Commemoration -->
+    <section class="section section--alt">
+      <div class="section__inner--no-label section__inner">
+        <div class="section__body">
+          <p class="section__text">
+            National Science Day commemorates the discovery of the Raman Effect by Sir C.V. Raman — a discovery that reshaped modern physics. While the day celebrates scientific achievement, Science Station transforms that celebration into participation, allowing visitors to experience the principles behind the discovery firsthand.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <p class="section__text">
-        Presented as part of the ZS Trade Show 2026, Science Station bridges traditional laboratory concepts with digital innovation, making science accessible, experiential, and intellectually stimulating.
-      </p>
-
-    </div>
-  </div>
-</section>
-
-    <!-- ═══════════════════════════════════════════
-         WHY THIS INITIATIVE?
-    ════════════════════════════════════════════════ -->
-
-    <section class="section">
-  <div class="section__inner">
-    <div class="section__body">
-      <p class="section__text">
-National Science Day commemorates the discovery of the Raman Effect by Sir C.V. Raman — a discovery that reshaped modern physics. While the day celebrates scientific achievement, Science Station transforms that celebration into participation, allowing visitors to experience the principles behind the discovery firsthand.
-</p>
-    </div>
-  </div>
-</section>
-    
-    <section class="section section--alt" id="why">
+    <!-- 01 Why This Initiative -->
+    <section class="section" id="why">
       <div class="section__inner">
         <div class="section__label">01</div>
         <div class="section__body">
@@ -93,10 +454,8 @@ National Science Day commemorates the discovery of the Raman Effect by Sir C.V. 
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         BEYOND DEMONSTRATION
-    ════════════════════════════════════════════════ -->
-    <section class="section" id="beyond">
+    <!-- 02 Beyond Demonstration -->
+    <section class="section section--alt" id="beyond">
       <div class="section__inner">
         <div class="section__label">02</div>
         <div class="section__body">
@@ -104,13 +463,11 @@ National Science Day commemorates the discovery of the Raman Effect by Sir C.V. 
           <p class="section__text">
             Science Station is built around experiences that do more than showcase — they immerse. Each station is designed to collapse the boundary between spectator and scientist.
           </p>
-
           <p class="section__text">
-At Science Station, every exhibit is structured around active participation. Visitors are not passive observers but collaborators in experimentation — engaging directly with chemistry, physics, and digital simulation.
-</p>
+            At Science Station, every exhibit is structured around active participation. Visitors are not passive observers but collaborators in experimentation — engaging directly with chemistry, physics, and digital simulation.
+          </p>
 
           <div class="cards">
-
             <article class="card fade-in">
               <div class="card__icon">⚗</div>
               <h3 class="card__title">Titration Live</h3>
@@ -120,9 +477,7 @@ At Science Station, every exhibit is structured around active participation. Vis
             <article class="card fade-in" style="animation-delay:.12s">
               <div class="card__icon">🔬</div>
               <h3 class="card__title">Raman Setup</h3>
-              <p class="card__desc"> A live Raman Effect demonstration honours the Nobel Prize-winning discovery of Sir C.V. Raman. 
-                Visitors observe how light scattering reveals molecular fingerprints — the same principle 
-                applied today in medical diagnostics and material science. </p>
+              <p class="card__desc">A live Raman Effect demonstration honours the Nobel Prize-winning discovery of Sir C.V. Raman. Visitors observe how light scattering reveals molecular fingerprints — the same principle applied today in medical diagnostics and material science.</p>
             </article>
 
             <article class="card fade-in" style="animation-delay:.24s">
@@ -136,16 +491,13 @@ At Science Station, every exhibit is structured around active participation. Vis
               <h3 class="card__title">Meme Breakdown</h3>
               <p class="card__desc">Science communicates through culture too. We deconstruct viral science memes and pop-science myths, separating accurate intuition from entertaining exaggeration — and showing how humour can be a surprisingly precise pedagogical tool.</p>
             </article>
-
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         FROM LAB TO LAUNCHPAD
-    ════════════════════════════════════════════════ -->
-    <section class="section section--alt" id="philosophy">
+    <!-- 03 From Lab to Launchpad -->
+    <section class="section" id="philosophy">
       <div class="section__inner">
         <div class="section__label">03</div>
         <div class="section__body">
@@ -168,10 +520,8 @@ At Science Station, every exhibit is structured around active participation. Vis
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════
-         THE FUTURE OF SCIENTIFIC ENGAGEMENT
-    ════════════════════════════════════════════════ -->
-    <section class="section section--vision" id="future">
+    <!-- 04 The Future -->
+    <section class="section section--alt section--vision" id="future">
       <div class="vision__glow" aria-hidden="true"></div>
       <div class="section__inner">
         <div class="section__label">04</div>
@@ -180,11 +530,9 @@ At Science Station, every exhibit is structured around active participation. Vis
           <p class="section__text section__text--large">
             The next generation of scientists will not be made in classrooms alone. They will be shaped by the moments that made science feel urgent, personal, and alive — by the experiment they ran themselves, the question nobody laughed at, the idea they were trusted to pursue.
           </p>
-
           <p class="section__text">
-Through its presence at National Science Day 2026 in Chennai, Science Station aims to inspire a new
-            generation of scientific thinkers who view experimentation as empowerment.
-</p>
+            Through its presence at National Science Day 2026 in Chennai, Science Station aims to inspire a new generation of scientific thinkers who view experimentation as empowerment.
+          </p>
           <p class="section__text">
             Science Station is building toward a world where that kind of engagement is not a special event, but an expectation. Where wonder is a policy. Where every National Science Day is not a celebration of the past, but a rehearsal for the future.
           </p>
@@ -194,24 +542,22 @@ Through its presence at National Science Day 2026 in Chennai, Science Station ai
         </div>
       </div>
     </section>
-    <!-- Explore More Section -->
-  <section class="section section--alt">
-    <div class="section__inner">
-      <div class="section__body">
-        <h2 class="section__title">Explore More</h2>
-        <p class="section__text">
-          Discover the full <a href="index.html">Science Station National Science Day 2026 Exhibition</a>, explore our <a href="exhibits.html">Interactive Science Exhibits</a>, or test your knowledge in our <a href="quiz.html">National Science Day Quiz</a>.
-        </p>
+
+    <!-- Explore More -->
+    <section class="section">
+      <div class="section__inner--no-label section__inner">
+        <div class="section__body">
+          <h2 class="section__title">Explore More</h2>
+          <p class="section__text">
+            Discover the full <a href="index.html">Science Station National Science Day 2026 Exhibition</a>, explore our <a href="exhibits.html">Interactive Science Exhibits</a>, or test your knowledge in our <a href="quiz.html">National Science Day Quiz</a>.
+          </p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   </main>
-  
 
-  <!-- ═══════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer class="footer">
     <p class="footer__brand">Science Station</p>
     <p class="footer__copy">Celebrating curiosity — National Science Day &amp; beyond.</p>

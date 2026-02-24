@@ -766,5 +766,27 @@
     <p class="footer__copy">Celebrating curiosity — National Science Day &amp; beyond.</p>
   </footer>
 
+  <script>
+  /* ── FAQ Accordion ─────────────────────────────── */
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('is-open');
+
+      // Collapse all
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('is-open');
+        el.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+      });
+
+      // If it wasn't open, open it
+      if (!isOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>

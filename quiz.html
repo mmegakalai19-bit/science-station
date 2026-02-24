@@ -661,64 +661,269 @@ function startQuiz() {
   }
 
   const canvas = document.createElement("canvas");
-  canvas.width = 800;
-  canvas.height = 1100; // Portrait
+  canvas.width = 900;
+  canvas.height = 1200;
 
   const ctx = canvas.getContext("2d");
 
-  // Background
-  ctx.fillStyle = "#0b1422";
+  // ── BACKGROUND GRADIENT ──
+  const bgGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  bgGrad.addColorStop(0, "#081221");
+  bgGrad.addColorStop(1, "#0f1e32");
+  ctx.fillStyle = bgGrad;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Border
+  // ── SUBTLE GRID TEXTURE ──
+  ctx.strokeStyle = "rgba(0,212,255,0.03)";
+  ctx.lineWidth = 1;
+  for (let x = 0; x < canvas.width; x += 50) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+  }
+  for (let y = 0; y < canvas.height; y += 50) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+  }
+
+  const M = 40; // margin from canvas edge
+
+  // ── OUTER BORDER (neon blue, 6px) ──
   ctx.strokeStyle = "#00d4ff";
-  ctx.lineWidth = 8;
-  ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
+  ctx.lineWidth = 6;
+  ctx.strokeRect(M, M, canvas.width - M * 2, canvas.height - M * 2);
 
-  // Title
-  ctx.fillStyle = "#00d4ff";
-  ctx.font = "bold 48px Orbitron";
+  // ── INNER BORDER (purple glow, 2px) ──
+  const gap = 12;
+  ctx.strokeStyle = "#7b2fff";
+  ctx.lineWidth = 2;
+  ctx.strokeRect(M + gap, M + gap, canvas.width - (M + gap) * 2, canvas.height - (M + gap) * 2);
+
+  // ── CORNER ACCENTS ──
+  const corners = [
+    [M, M], [canvas.width - M, M],
+    [M, canvas.height - M], [canvas.width - M, canvas.height - M]
+  ];
+  corners.forEach(([cx, cy]) => {
+    ctx.strokeStyle = "#00d4ff";
+    ctx.lineWidth = 3;
+    const len = 24;
+    const dx = cx === M ? 1 : -1;
+    const dy = cy === M ? 1 : -1;
+    ctx.beginPath();
+    ctx.moveTo(cx + dx * len, cy); ctx.lineTo(cx, cy); ctx.lineTo(cx, cy + dy * len);
+    ctx.stroke();
+  });
+
+  // ── ATOM ICON ──
+  ctx.font = "52px Arial";
   ctx.textAlign = "center";
-  ctx.fillText("CERTIFICATE OF PARTICIPATION", canvas.width / 2, 200);
+  ctx.fillText("⚛", canvas.width / 2, 135);
 
-  // Subtitle
-  ctx.fillStyle = "#c8dff0";
-  ctx.font = "28px Rajdhani";
-  ctx.fillText("National Science Day 2026", canvas.width / 2, 260);
+  // ── TITLE ──
+  ctx.save();
+  ctx.shadowColor = "#00d4ff";
+  ctx.shadowBlur = 18;
+  ctx.fillStyle = "#00d4ff";
+  ctx.font = "bold 38px 'Orbitron', monospace";
+  ctx.textAlign = "center";
+  ctx.letterSpacing = "4px";
+  // Measure and scale down if needed
+  const titleText = "CERTIFICATE OF PARTICIPATION";
+  ctx.fillText(titleText, canvas.width / 2, 215);
+  ctx.restore();
 
-  // Presented line
-  ctx.font = "26px Rajdhani";
-  ctx.fillText("This certificate is proudly presented to", canvas.width / 2, 350);
+  // ── TITLE UNDERLINE ──
+  const titleLineGrad = ctx.createLinearGradient(160, 0, 740, 0);
+  titleLineGrad.addColorStop(0, "transparent");
+  titleLineGrad.addColorStop(0.3, "#00d4ff");
+  titleLineGrad.addColorStop(0.7, "#7b2fff");
+  titleLineGrad.addColorStop(1, "transparent");
+  ctx.strokeStyle = titleLineGrad;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(160, 230); ctx.lineTo(740, 230);
+  ctx.stroke();
 
-  // Name
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 60px Rajdhani";
-  ctx.fillText(name, canvas.width / 2, 450);
+  // ── SUBTITLE ──
+  ctx.fillStyle = "#8ab0cc";
+  ctx.font = "24px 'Rajdhani', sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("National Science Day 2026", canvas.width / 2, 278);
 
-  // Participation text
-  ctx.fillStyle = "#c8dff0";
-  ctx.font = "26px Rajdhani";
-  ctx.fillText("For participating in the Science Station Live Quiz", canvas.width / 2, 520);
+  // ── DIVIDER DOTS ──
+  [canvas.width / 2 - 20, canvas.width / 2, canvas.width / 2 + 20].forEach(x => {
+    ctx.beginPath();
+    ctx.arc(x, 305, 3, 0, Math.PI * 2);
+    ctx.fillStyle = "#7b2fff";
+    ctx.fill();
+  });
 
-  // Score
-  ctx.fillText("Score: " + score + " / " + QUESTIONS.length, canvas.width / 2, 580);
-
-  // Date
-  const today = new Date().toLocaleDateString();
-  ctx.fillText("Date: " + today, canvas.width / 2, 700);
-
-  // Footer
+  // ── PRESENTED TO ──
   ctx.fillStyle = "#4a7090";
-  ctx.font = "22px Rajdhani";
-  ctx.fillText("ZS Trade Show Chennai 2026", canvas.width / 2, 1000);
+  ctx.font = "20px 'Rajdhani', sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("This certificate is proudly presented to", canvas.width / 2, 360);
 
-  // Download
+  // ── NAME ──
+  ctx.save();
+  ctx.shadowColor = "rgba(0,212,255,0.4)";
+  ctx.shadowBlur = 12;
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "bold 56px 'Rajdhani', sans-serif";
+  ctx.textAlign = "center";
+  // Clamp long names
+  let displayName = name;
+  while (ctx.measureText(displayName).width > 720 && displayName.length > 4) {
+    displayName = displayName.slice(0, -1);
+  }
+  if (displayName !== name) displayName += "…";
+  ctx.fillText(displayName, canvas.width / 2, 430);
+  ctx.restore();
+
+  // ── NAME UNDERLINE (neon line) ──
+  const nameWidth = Math.min(ctx.measureText(displayName).width + 60, 580);
+  const nameLineGrad = ctx.createLinearGradient(
+    (canvas.width - nameWidth) / 2, 0,
+    (canvas.width + nameWidth) / 2, 0
+  );
+  nameLineGrad.addColorStop(0, "transparent");
+  nameLineGrad.addColorStop(0.2, "#00d4ff");
+  nameLineGrad.addColorStop(0.8, "#00d4ff");
+  nameLineGrad.addColorStop(1, "transparent");
+  ctx.strokeStyle = nameLineGrad;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo((canvas.width - nameWidth) / 2, 446);
+  ctx.lineTo((canvas.width + nameWidth) / 2, 446);
+  ctx.stroke();
+
+  // ── PARTICIPATION TEXT ──
+  ctx.fillStyle = "#8ab0cc";
+  ctx.font = "22px 'Rajdhani', sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("For participating in the", canvas.width / 2, 510);
+  ctx.fillStyle = "#c8dff0";
+  ctx.font = "bold 24px 'Rajdhani', sans-serif";
+  ctx.fillText("Science Station Live Quiz", canvas.width / 2, 542);
+  ctx.fillStyle = "#8ab0cc";
+  ctx.font = "22px 'Rajdhani', sans-serif";
+  ctx.fillText("at ZS Trade Show, Chennai", canvas.width / 2, 574);
+
+  // ── SCORE BOX ──
+  const boxX = canvas.width / 2 - 120;
+  const boxY = 618;
+  const boxW = 240;
+  const boxH = 70;
+  const boxGrad = ctx.createLinearGradient(boxX, boxY, boxX + boxW, boxY + boxH);
+  boxGrad.addColorStop(0, "rgba(0,212,255,0.08)");
+  boxGrad.addColorStop(1, "rgba(123,47,255,0.08)");
+  ctx.fillStyle = boxGrad;
+  ctx.beginPath();
+  ctx.roundRect(boxX, boxY, boxW, boxH, 10);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(0,212,255,0.3)";
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  ctx.fillStyle = "#4a7090";
+  ctx.font = "14px 'Orbitron', monospace";
+  ctx.textAlign = "center";
+  ctx.fillText("FINAL SCORE", canvas.width / 2, 645);
+  ctx.save();
+  ctx.shadowColor = "#00ff9d";
+  ctx.shadowBlur = 10;
+  ctx.fillStyle = "#00ff9d";
+  ctx.font = "bold 30px 'Orbitron', monospace";
+  ctx.fillText(`${score} / ${QUESTIONS.length}`, canvas.width / 2, 677);
+  ctx.restore();
+
+  // ── HORIZONTAL RULE ──
+  const hrGrad = ctx.createLinearGradient(100, 0, 800, 0);
+  hrGrad.addColorStop(0, "transparent");
+  hrGrad.addColorStop(0.2, "rgba(0,212,255,0.2)");
+  hrGrad.addColorStop(0.8, "rgba(0,212,255,0.2)");
+  hrGrad.addColorStop(1, "transparent");
+  ctx.strokeStyle = hrGrad;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(100, 726); ctx.lineTo(800, 726);
+  ctx.stroke();
+
+  // ── DATE ──
+  const today = new Date().toLocaleDateString('en-IN', {
+    day: 'numeric', month: 'long', year: 'numeric'
+  });
+  ctx.fillStyle = "#4a7090";
+  ctx.font = "18px 'Rajdhani', sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("Date: " + today, canvas.width / 2, 770);
+
+  // ── GOLD SEAL BADGE (bottom right) ──
+  const sealX = canvas.width - M - gap - 80;
+  const sealY = canvas.height - M - gap - 80;
+  const sealR = 60;
+
+  // Outer glow
+  ctx.save();
+  ctx.shadowColor = "rgba(255,215,0,0.5)";
+  ctx.shadowBlur = 20;
+
+  // Circle gradient
+  const sealGrad = ctx.createRadialGradient(sealX, sealY, 10, sealX, sealY, sealR);
+  sealGrad.addColorStop(0, "#fff4a0");
+  sealGrad.addColorStop(0.5, "#ffd700");
+  sealGrad.addColorStop(1, "#b8860b");
+  ctx.fillStyle = sealGrad;
+  ctx.beginPath();
+  ctx.arc(sealX, sealY, sealR, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Seal border
+  ctx.strokeStyle = "#fff4a0";
+  ctx.lineWidth = 3;
+  ctx.stroke();
+  ctx.restore();
+
+  // Seal inner ring
+  ctx.strokeStyle = "rgba(139,90,0,0.4)";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.arc(sealX, sealY, sealR - 8, 0, Math.PI * 2);
+  ctx.stroke();
+
+  // Seal text
+  ctx.save();
+  ctx.fillStyle = "#3a2000";
+  ctx.font = "bold 11px 'Orbitron', monospace";
+  ctx.textAlign = "center";
+  ctx.fillText("SCIENCE", sealX, sealY - 5);
+  ctx.fillText("STATION", sealX, sealY + 10);
+  ctx.font = "10px 'Orbitron', monospace";
+  ctx.fillText("⚛ 2026 ⚛", sealX, sealY + 26);
+  ctx.restore();
+
+  // ── SIGNATURE LINE (bottom left) ──
+  ctx.strokeStyle = "rgba(0,212,255,0.4)";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(M + gap + 30, canvas.height - M - gap - 50);
+  ctx.lineTo(M + gap + 180, canvas.height - M - gap - 50);
+  ctx.stroke();
+  ctx.fillStyle = "#4a7090";
+  ctx.font = "14px 'Rajdhani', sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("Organizer", M + gap + 105, canvas.height - M - gap - 32);
+
+  // ── FOOTER ──
+  ctx.fillStyle = "#2a4a60";
+  ctx.font = "18px 'Rajdhani', sans-serif";
+  ctx.textAlign = "center";
+  ctx.fillText("ZS Trade Show Chennai 2026", canvas.width / 2, canvas.height - M - gap - 28);
+
+  // ── DOWNLOAD ──
   const link = document.createElement("a");
-  link.download = "Science_Certificate_" + name + ".png";
+  link.download = "Science_Certificate_" + name.replace(/\s+/g, "_") + ".png";
   link.href = canvas.toDataURL("image/png");
   link.click();
 }
-
 function renderQuestion() {
   const q = QUESTIONS[currentQ];
   document.getElementById('q-counter').textContent = `QUESTION ${currentQ + 1} / ${QUESTIONS.length}`;

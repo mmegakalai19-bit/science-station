@@ -577,6 +577,9 @@
   </p>
 
         <button class="btn btn-secondary" onclick="playAgain()" style="margin-top:20px;">▶ PLAY AGAIN</button>
+        <button class="btn btn-primary" onclick="generateCertificate()" style="margin-top:15px;">
+🎓 DOWNLOAD CERTIFICATE
+</button>
       </div>
     </div>
   </div>
@@ -647,6 +650,73 @@ function startQuiz() {
   score = 0;
   showScreen('screen-question');
   renderQuestion();
+}
+
+  function generateCertificate() {
+  const name = document.getElementById('player-name').value.trim();
+
+  if (!name) {
+    alert("Enter your name first");
+    return;
+  }
+
+  const canvas = document.createElement("canvas");
+  canvas.width = 800;
+  canvas.height = 1100; // Portrait
+
+  const ctx = canvas.getContext("2d");
+
+  // Background
+  ctx.fillStyle = "#0b1422";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Border
+  ctx.strokeStyle = "#00d4ff";
+  ctx.lineWidth = 8;
+  ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
+
+  // Title
+  ctx.fillStyle = "#00d4ff";
+  ctx.font = "bold 48px Orbitron";
+  ctx.textAlign = "center";
+  ctx.fillText("CERTIFICATE OF PARTICIPATION", canvas.width / 2, 200);
+
+  // Subtitle
+  ctx.fillStyle = "#c8dff0";
+  ctx.font = "28px Rajdhani";
+  ctx.fillText("National Science Day 2026", canvas.width / 2, 260);
+
+  // Presented line
+  ctx.font = "26px Rajdhani";
+  ctx.fillText("This certificate is proudly presented to", canvas.width / 2, 350);
+
+  // Name
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "bold 60px Rajdhani";
+  ctx.fillText(name, canvas.width / 2, 450);
+
+  // Participation text
+  ctx.fillStyle = "#c8dff0";
+  ctx.font = "26px Rajdhani";
+  ctx.fillText("For participating in the Science Station Live Quiz", canvas.width / 2, 520);
+
+  // Score
+  ctx.fillText("Score: " + score + " / " + QUESTIONS.length, canvas.width / 2, 580);
+
+  // Date
+  const today = new Date().toLocaleDateString();
+  ctx.fillText("Date: " + today, canvas.width / 2, 700);
+
+  // Footer
+  ctx.fillStyle = "#4a7090";
+  ctx.font = "22px Rajdhani";
+  ctx.fillText("ZS Trade Show Chennai 2026", canvas.width / 2, 1000);
+
+  // Download
+  const link = document.createElement("a");
+  link.download = "Science_Certificate_" + name + ".png";
+  link.href = canvas.toDataURL("image/png");
+  link.click();
 }
 
 function renderQuestion() {

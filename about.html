@@ -395,6 +395,114 @@
       body { font-size: 17px; }
       .section { padding: 100px 6vw; }
     }
+
+    /* ── FAQ ACCORDION ─────────────────────────────── */
+.faq-list {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+}
+
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  transition: border-color .35s var(--ease), box-shadow .35s var(--ease);
+}
+
+.faq-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0;
+  transition: opacity .35s var(--ease);
+}
+
+.faq-item.is-open {
+  border-color: rgba(0, 229, 255, .2);
+  box-shadow: 0 12px 36px rgba(0, 229, 255, .05);
+}
+
+.faq-item.is-open::before {
+  opacity: 1;
+}
+
+.faq-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.3rem 1.6rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-hi);
+  font-family: var(--font-head);
+  font-size: clamp(.9rem, 1.3vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: .01em;
+  transition: color .3s var(--ease);
+}
+
+.faq-btn:hover {
+  color: var(--accent);
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .85rem;
+  color: var(--accent);
+  transition: transform .4s var(--ease), background .3s var(--ease), border-color .3s var(--ease);
+}
+
+.faq-item.is-open .faq-icon {
+  transform: rotate(45deg);
+  background: rgba(0, 229, 255, .08);
+  border-color: rgba(0, 229, 255, .3);
+}
+
+.faq-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .42s var(--ease);
+}
+
+.faq-item.is-open .faq-body {
+  grid-template-rows: 1fr;
+}
+
+.faq-body__inner {
+  overflow: hidden;
+}
+
+.faq-answer {
+  padding: 0 1.6rem 1.4rem;
+  color: var(--text-mid);
+  font-size: clamp(.87rem, 1.3vw, 1rem);
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .35s var(--ease) .1s, transform .35s var(--ease) .1s;
+}
+
+.faq-item.is-open .faq-answer {
+  opacity: 1;
+  transform: translateY(0);
+}
   </style>
 </head>
 <body>
@@ -555,6 +663,88 @@
         </div>
       </div>
     </section>
+
+    <!-- FAQ -->
+<section class="section section--alt" id="faq">
+  <div class="section__inner--no-label">
+    <h2 class="section__title">Frequently Asked Questions</h2>
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq-a1">
+          What is the purpose of Science Station?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-a1" role="region">
+          <div class="faq-body__inner">
+            <p class="faq-answer">Science Station is an interactive initiative designed to make scientific thinking accessible, engaging, and practical. It connects core scientific principles with modern digital innovation, including SaaS and data-driven experimentation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq-a2">
+          Why is this project presented on National Science Day?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-a2" role="region">
+          <div class="faq-body__inner">
+            <p class="faq-answer">National Science Day commemorates the discovery of the Raman Effect and celebrates scientific curiosity, experimentation, and innovation — values that form the foundation of this exhibition.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq-a3">
+          How is SaaS related to science?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-a3" role="region">
+          <div class="faq-body__inner">
+            <p class="faq-answer">SaaS platforms rely on controlled experimentation, hypothesis testing, and data-driven decision making — principles rooted in the scientific method.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq-a4">
+          What makes this quiz different from regular science quizzes?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-a4" role="region">
+          <div class="faq-body__inner">
+            <p class="faq-answer">This quiz focuses on conceptual understanding rather than memorization. It integrates physics, scientific reasoning, and real-world applications like digital systems and algorithmic learning.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq-a5">
+          How does the live leaderboard work?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-a5" role="region">
+          <div class="faq-body__inner">
+            <p class="faq-answer">The leaderboard is powered by a real-time database that updates instantly as participants submit their scores, demonstrating practical implementation of modern cloud technology.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq-a6">
+          Who can participate?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-body" id="faq-a6" role="region">
+          <div class="faq-body__inner">
+            <p class="faq-answer">Anyone curious about science — students, engineers, business professionals, or enthusiasts — can participate and test their analytical thinking.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- Explore More -->
     <section class="section">
